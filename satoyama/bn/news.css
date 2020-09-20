@@ -1,0 +1,108 @@
+div.title {
+  text-align: center;
+  border-top: medium solid black;
+  border-bottom: medium solid black;
+  border-left: none;
+  border-right: none;
+  padding: 0;
+  margin: 0.5em;
+}
+
+div.body {
+  line-height: 140%;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1.newstitle {
+  font-size: 300%;
+}
+
+h2 {
+  text-align: center;
+}
+
+h2.title {
+  font-size: 150%;
+  text-align: center;
+  margin-top: 1em;
+}
+
+h2.small {
+  font-size: 1;
+}
+
+h3.title {
+  text-align: center;
+}
+
+P.author {
+  text-align: right;
+  margin-right: 2%;
+}
+
+p.title {
+  font-weight: bold;
+}
+
+P.subtitle {
+  font-weight: bold;
+  text-align: center;
+}
+
+p.text {
+  text-indent: 1em;
+}
+
+p.footer {
+  text-align: center;
+}
+
+P.body {
+  text-indent: 1em;
+  text-align: justify;
+  line-height: 1.4;
+  margin-left: 2%;
+}
+
+P.bodynoindent {
+  text-align: justify;
+  line-height: 1.4;
+  margin-left: 2%;
+}
+
+P.center {
+  text-align: center;
+}
+
+P.right {
+  text-align: right;
+}
+
+p.autl {
+  text-align: center;
+}
+
+p.equation {
+  margin-left: 20%;
+}
+
+SUP {
+  font-size: 70%;
+}
+
+SUB {
+  font-size: 70%;
+}
+
+span.gakumei {
+  font-style: italic;
+}
+
+span.name {
+  font-weight: bold;
+}
