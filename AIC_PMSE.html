@@ -1392,7 +1392,7 @@ transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 .reveal h5,
 .reveal h6 {
 text-transform: none;
-font-family: "BIZ UDPGothic", "Noto Sans JP"; "Noto Sans CJK JP"; sans-serif;
+font-family: "BIZ UDPGothic", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
 }
 h1.title {
 font-weight: bold;
@@ -1401,7 +1401,7 @@ h2 {
 font-weight: bold;
 }
 .reveal .slide {
-font-family: "BIZ UDPGothic", "Noto Sans JP"; "Noto Sans CJK JP"; sans-serif;
+font-family: "BIZ UDPGothic", "Noto Sans JP", "Noto Sans CJK JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
 }
 sup {
 font-size: 70% !important;
@@ -1415,6 +1415,10 @@ border: none;
 width: auto;
 height: auto;
 max-height: 560px;
+}
+.reveal pre {
+font-size: 1em !important;
+box-shadow: 0px 0px 6px rgba(255, 255, 255, 0.3) !important;
 }
 </style>
 
@@ -1863,14 +1867,14 @@ prediction)を重視するモデル選択基準です」(久保 2012)</li>
 <section id="post-selection-test" class="title-slide slide level1">
 <h1>モデル選択後に検定?</h1>
 <div style="text-align: left; padding: 1em;">
-<p>モデル選択後に係数の有意検定をしている例もわりと見かけるが…</p>
+<p>モデル選択後に係数の有意性検定をしている例もわりと見かけるが…</p>
 </div>
 <div style="text-align: left;">
 <ul>
-<li>有意検定: 多くの場合、係数が0であるかないかを検定</li>
+<li>有意性検定: 多くのばあい、係数が0であるかないかを検定</li>
 <li>モデル選択ではずれた説明変数は、係数=0としていることと同義
 <ul>
-<li>あらためて係数=0か検定する意義とは?</li>
+<li>残った変数で、あらためて係数=0か検定する意義とは?</li>
 </ul></li>
 </ul>
 </div>
@@ -1885,7 +1889,7 @@ prediction)を重視するモデル選択基準です」(久保 2012)</li>
 </ol>
 </div>
 <div style="text-align: right;">
-<p>竹内ほか(2022)</p>
+<p>竹内ほか (2022)</p>
 </div>
 </section>
 <section id="予測と因果はちがう" class="slide level2">
@@ -1894,7 +1898,7 @@ prediction)を重視するモデル選択基準です」(久保 2012)</li>
 <p>「予測を目的とした回帰モデルの偏回帰係数に因果関係的な解釈を持ち込もうとする(期待する)のはもちろんのこと，個々の偏回帰係数が生物学的・生態学的にどのような意味を持つのかを考察することも，本来の解析目的からは逸脱した，明確な理論的根拠に欠ける行為である」</p>
 </div>
 <div style="text-align: right;">
-<p>(竹内ほか 2022)</p>
+<p>竹内ほか (2022)</p>
 </div>
 </section>
 <section id="モデル選択後の推定量" class="slide level2">
@@ -1929,7 +1933,7 @@ al. 2022, etc.)</p>
 <section id="ex1_model" class="slide level2">
 <h2>モデル</h2>
 <ol type="1">
-<li><code>y ~ 1</code></li>
+<li><code>y ~ 1       ←「正しい」モデル</code></li>
 <li><code>y ~ x1</code></li>
 <li><code>y ~ x2</code></li>
 <li><code>y ~ x3</code></li>
@@ -1939,7 +1943,10 @@ al. 2022, etc.)</p>
 <li><code>y ~ x1 + x2 + x3</code></li>
 </ol>
 <div style="text-align: left;">
-<p>10^4 回くりかえし<br /> 選択されたモデルの頻度分布を求める。</p>
+<ul>
+<li>AICによるモデル選択を 10^4 回くりかえし<br /></li>
+<li>選択されたモデルの頻度分布を求める。</li>
+</ul>
 </div>
 </section>
 <section id="ex1_AIC" class="slide level2">
@@ -1999,10 +2006,13 @@ y \sim \mathcal{N}(x_1 + 0.3 x_2, 4^2)
 <h2>モデル</h2>
 <ol type="1">
 <li><code>y ~ x1</code></li>
-<li><code>y ~ x1 + x2</code></li>
+<li><code>y ~ x1 + x2   ←「正しい」モデル</code></li>
 </ol>
 <div style="text-align: left;">
-<p>10^5 回くりかえし<br /> 選択されたモデルの頻度分布を求める。</p>
+<ul>
+<li>AICによるモデル選択を 10^5 回くりかえし<br /></li>
+<li>選択されたモデルの頻度分布を求める。</li>
+</ul>
 </div>
 </section>
 <section id="ex2_AIC" class="slide level2">
@@ -2083,11 +2093,16 @@ regression models: An integrated review. <a href="https://doi.org/10.1214/22-SS1
 </ul>
 </div>
 </section>
-<section id="コード" class="slide level2">
-<h2>コード</h2>
+<section id="ファイルなど" class="slide level2">
+<h2>ファイルなど</h2>
 <div style="text-align: left;">
-<p>今回の例題のRコード（と、スライド作成のコード）は</p>
-<p><a href="https://github.com/ito4303/AIC_PMSE">https://github.com/ito4303/AIC_PMSE</a></p>
+<p>今回のスライドは</p>
+<p><a href="https://ito4303.github.io/AIC_PMSE.html" class="uri">https://ito4303.github.io/AIC_PMSE.html</a></p>
+<p>にあります。</p>
+</div>
+<div style="margin-top: 1em; text-align: left;">
+<p>例題のRコード（と、スライド作成のコード）は</p>
+<p><a href="https://github.com/ito4303/AIC_PMSE" class="uri">https://github.com/ito4303/AIC_PMSE</a></p>
 <p>においてあります。</p>
 </div>
 </section></section>
