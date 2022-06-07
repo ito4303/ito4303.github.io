@@ -1,5 +1,7 @@
 # ITÔ Hiroki Web
 
+- [いつでもAICを使えばよいというものではない](AIC_PMSE.html) (2022-06-07 森林総合研究所北海道支所所内セミナー)
+    - リポジトリ: [AIC_PMSE](https://github.com/ito4303/AIC_PMSE)
 - [植生被度階級データの状態空間モデリング](https://doi.org/10.6084/m9.figshare.14252693.v1)（第132回日本森林学会大会）
     - リポジトリ: [jfs132](https://github.com/ito4303/jfs132)
 - [R, BUGS, Stanによる階層モデルのあてはめ](https://doi.org/10.6084/m9.figshare.14229572.v1)（第68回日本生態学会大会）
