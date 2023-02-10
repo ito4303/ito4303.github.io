@@ -1545,11 +1545,11 @@ margin-right: 0; }
 <ul>
 <li>Core: Occurrence data
 <ul>
-<li>個体を単位として測定しているので</li>
+<li>個体（樹幹）を単位として測定しているので</li>
 </ul></li>
 <li>Extension: Measurement or Facts
 <ul>
-<li>樹高および胸高直径</li>
+<li>樹高または胸高直径</li>
 </ul></li>
 </ul>
 </section>
@@ -1562,19 +1562,19 @@ margin-right: 0; }
 <div style="overflow: auto; white-space: nowrap;">
 <table style="width:100%;">
 <colgroup>
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 7%">
+<col style="width: 15%">
+<col style="width: 5%">
+<col style="width: 9%">
+<col style="width: 21%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 4%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1705,15 +1705,15 @@ margin-right: 0; }
 </div>
 <div id="tabset-2-2">
 <div style="overflow: auto; white-space: nowrap;">
-<table style="width:100%;">
+<table>
 <colgroup>
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 9%">
+<col style="width: 16%">
+<col style="width: 10%">
+<col style="width: 12%">
+<col style="width: 10%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1874,7 +1874,7 @@ margin-right: 0; }
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="co"># 測定データに出現データを結合</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(mea_data, occ_data,</span>
 <span id="cb7-4"><a href="#cb7-4"></a>                   <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;CoreID&quot;</span> <span class="ot">=</span> <span class="st">&quot;occurrenceID&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="co"># 必要なデータを抽出</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="co"># 必要な項目を抽出</span></span>
 <span id="cb7-6"><a href="#cb7-6"></a>  dplyr<span class="sc">::</span><span class="fu">transmute</span>(catalogNumber,</span>
 <span id="cb7-7"><a href="#cb7-7"></a>                   <span class="at">Species =</span> <span class="fu">str_c</span>(genus, <span class="st">&quot; &quot;</span>, specificEpithet),</span>
 <span id="cb7-8"><a href="#cb7-8"></a>                   measurementType, measurementValue,</span>
