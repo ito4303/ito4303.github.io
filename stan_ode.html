@@ -1233,12 +1233,14 @@ margin-right: 0; }
 <section id="ロジスティック方程式" class="slide level2">
 <h2>ロジスティック方程式</h2>
 <div style="margin-top: 1em;">
-<p>ある生物の個体数 <em>x</em> (正の実数)の、時間 <em>t</em> における変化量</p>
+<p>生物の個体数の時間変化をあらわす微分方程式</p>
 </div>
 <p><span class="math display">\[
 \frac{dx}{dt} = rx\left(1-\frac{x}{K}\right)
 \]</span></p>
 <ul>
+<li><em>x</em> : 個体数</li>
+<li><em>t</em> : 時間</li>
 <li><em>r</em> : 内的自然増加率</li>
 <li><em>K</em> : 環境収容力</li>
 </ul>
@@ -1253,10 +1255,10 @@ margin-right: 0; }
 </ul>
 </div>
 </section>
-<section id="stanの常微分方程式ソルバー関数" class="slide level2">
-<h2>Stanの常微分方程式ソルバー関数</h2>
+<section id="stanで微分方程式" class="slide level2">
+<h2>Stanで微分方程式</h2>
 <div style="margin-top: 1em;">
-<p>アルゴリズムの異なる関数がいくつか用意されているが、今回は<code>ode_rk45</code>を使用。</p>
+<p>Stanには<a href="https://mc-stan.org/docs/stan-users-guide/ode-solver.html">常微分方程式</a>の<a href="https://mc-stan.org/docs/functions-reference/functions-ode-solver.html">数値解を求める関数</a>が組み込まれている。アルゴリズムの異なる関数がいくつか用意されているが、今回は一般的な<code>ode_rk45</code>を使用。</p>
 </div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">array</span>[] <span class="dt">vector</span> ode_rk45(function ode, </span>
 <span id="cb1-2"><a href="#cb1-2"></a>                        <span class="dt">vector</span> initial_state,</span>
