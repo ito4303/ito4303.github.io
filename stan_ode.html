@@ -1269,8 +1269,8 @@ margin-right: 0; }
 </div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">vector</span> ode(<span class="dt">real</span> time, <span class="dt">vector</span> state, ...)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="stanモデルのfunctionsブロック" class="slide level2">
-<h2>Stanモデルのfunctionsブロック</h2>
+<section id="stanモデル-functionsブロック" class="slide level2">
+<h2>Stanモデル: functionsブロック</h2>
 <div style="margin-top: 1em;">
 <p>ロジスティック方程式を定義</p>
 </div>
@@ -1288,22 +1288,38 @@ margin-right: 0; }
 <span id="cb3-9"><a href="#cb3-9"></a>  }</span>
 <span id="cb3-10"><a href="#cb3-10"></a>}</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="stanモデルのmodelブロック" class="slide level2">
-<h2>Stanモデルのmodelブロック</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="1-14|3-4|6-8" style="margin-top: 1em;"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">model</span> {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span> theta = {r, K};</span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="dt">array</span>[N] <span class="dt">vector</span>[<span class="dv">1</span>] z = ode_rk45(logistic, z0, <span class="dv">0</span>, ts,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>                                  theta);</span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a>  y0 ~ lognormal(log(z0), sigma);</span>
-<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N)</span>
-<span id="cb4-8"><a href="#cb4-8"></a>    y[n] ~ lognormal(log(z[n]), sigma);</span>
-<span id="cb4-9"><a href="#cb4-9"></a>  <span class="co">// priors</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a>  r ~ normal(<span class="dv">0</span>, <span class="dv">5</span>);</span>
-<span id="cb4-11"><a href="#cb4-11"></a>  K ~ normal(<span class="dv">0</span>, <span class="dv">100</span>);</span>
-<span id="cb4-12"><a href="#cb4-12"></a>  z0 ~ normal(<span class="dv">0</span>, <span class="dv">100</span>);</span>
-<span id="cb4-13"><a href="#cb4-13"></a>  sigma ~ normal(<span class="dv">0</span>, <span class="dv">5</span>);</span>
-<span id="cb4-14"><a href="#cb4-14"></a>}</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="data-parametersブロック" class="slide level2">
+<h2>data &amp; parametersブロック</h2>
+<div class="sourceCode" id="cb4" style="margin-top: 1em;"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">data</span> {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; N;            <span class="co">// number of measurements</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="dt">array</span>[N] <span class="dt">real</span> ts;            <span class="co">// measurement times</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; y0;          <span class="co">// initial measured value</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="dt">array</span>[N] <span class="dt">real</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; y;  <span class="co">// measured values</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>}</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">parameters</span> {</span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; r;        <span class="co">// intrinsic growth rate</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; K;        <span class="co">// carrying capacity</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt;[<span class="dv">1</span>] z0;  <span class="co">// initial value</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span> = <span class="dv">0</span>&gt; sigma;    <span class="co">// noise scale</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>}</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modelブロック" class="slide level2">
+<h2>modelブロック</h2>
+<div class="sourceCode" id="cb5" data-code-line-numbers="1-14|3-4|6-8" style="margin-top: 1em;"><pre class="sourceCode numberSource stan number-lines code-with-copy"><code class="sourceCode stan"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">model</span> {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="dt">array</span>[<span class="dv">2</span>] <span class="dt">real</span> theta = {r, K};</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="dt">array</span>[N] <span class="dt">vector</span>[<span class="dv">1</span>] z = ode_rk45(logistic, z0, <span class="dv">0</span>, ts,</span>
+<span id="cb5-4"><a href="#cb5-4"></a>                                  theta);</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  y0 ~ lognormal(log(z0), sigma);</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    y[n] ~ lognormal(log(z[n]), sigma);</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="co">// priors</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a>  r ~ normal(<span class="dv">0</span>, <span class="dv">5</span>);</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  K ~ normal(<span class="dv">0</span>, <span class="dv">100</span>);</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  z0 ~ normal(<span class="dv">0</span>, <span class="dv">100</span>);</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  sigma ~ normal(<span class="dv">0</span>, <span class="dv">5</span>);</span>
+<span id="cb5-14"><a href="#cb5-14"></a>}</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="結果" class="slide level2">
 <h2>結果</h2>
