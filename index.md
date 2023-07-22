@@ -1,5 +1,7 @@
 # ITÔ Hiroki Web
 
+## 各種発表ファイル
+
 - [NIMBLEでMCMC](https://ito4303.github.io/NIMBLE-MCMC.html) (2023-07-15 第107回 Tokyo.R)
     - リポジトリ: [TokyoR107](https://github.com/ito4303/TokyoR107)
 - [RとStanで微分方程式入りのモデル](https://ito4303.github.io/stan_ode.html) (2023-04-22 第105回 Tokyo.R)
@@ -25,3 +27,11 @@
     - リポジトリ: [esj65](https://github.com/ito4303/esj65)
 - [Stanとdlmによる状態空間モデル](https://doi.org/10.6084/m9.figshare.4127187.v6) (SappoRo.R #7)
     - リポジトリ: [SappoRoR7](https://github.com/ito4303/SappoRoR7)
+
+## リンク
+
+- [伊東ウェブ](https://ito4303.sakura.ne.jp/)
+    - [Blog](https://ito4303.sakura.ne.jp/posts.html)
+- [Taglibro de H](https://ito-hi.blog.ss-blog.jp/)
+- [GitHub](https://github.com/ito4303)
+- [researchmap](https://researchmap.jp/read0208767)
