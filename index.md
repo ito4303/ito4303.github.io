@@ -2,6 +2,7 @@
 
 ## 各種発表ファイル
 
+- [Rootogramでモデルのあてはまりを評価](https://ito4303.github.io/Rootogram.html) (2023-10-07 第109回 Tokyo.R)
 - [NIMBLEでMCMC](https://ito4303.github.io/NIMBLE-MCMC.html) (2023-07-15 第107回 Tokyo.R)
     - リポジトリ: [TokyoR107](https://github.com/ito4303/TokyoR107)
 - [RとStanで微分方程式入りのモデル](https://ito4303.github.io/stan_ode.html) (2023-04-22 第105回 Tokyo.R)
