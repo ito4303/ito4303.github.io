@@ -2,7 +2,7 @@
 
 ## 各種発表ファイル
 
--[Quartoでウェブサイトをつくってみた](https://ito4303.github.io/SappoRoR11.html) (2024-02-17 SappoRo.R #11)
+- [Quartoでウェブサイトをつくってみた](https://ito4303.github.io/SappoRoR11.html) (2024-02-17 SappoRo.R #11)
     - リポジトリ [SappoRoR11](https://github.com/ito4303/SappoRoR11)
 - [Rootogramでモデルのあてはまりを評価](https://ito4303.github.io/Rootogram.html) (2023-10-07 第109回 Tokyo.R)
     - リポジトリ: [TokyoR109](https://github.com/ito4303/TokyoR109)
