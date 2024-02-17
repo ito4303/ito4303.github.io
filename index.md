@@ -2,6 +2,8 @@
 
 ## 各種発表ファイル
 
+-[Quartoでウェブサイトをつくってみた](https://ito4303.github.io/SappoRoR11.html) (2024-02-17 SappoRo.R #11)
+    - リポジトリ [SappoRoR11](https://github.com/ito4303/SappoRoR11)
 - [Rootogramでモデルのあてはまりを評価](https://ito4303.github.io/Rootogram.html) (2023-10-07 第109回 Tokyo.R)
     - リポジトリ: [TokyoR109](https://github.com/ito4303/TokyoR109)
 - [NIMBLEでMCMC](https://ito4303.github.io/NIMBLE-MCMC.html) (2023-07-15 第107回 Tokyo.R)
@@ -12,7 +14,7 @@
 - [階層モデルあてはめの実例](jfssa2022_ito.pdf) (2022-09-04 2022年度統計関連学会連合大会 チュートリアルセッション「生態学における階層モデルの応用」)
     - リポジトリ: [jfssa2022](https://github.com/ito4303/jfssa2022)
 - [いつでもAICを使えばよいというものではない](AIC_PMSE.html) (2022-06-07 森林総合研究所北海道支所所内セミナー)
-    - リポジトリ: [AIC_PMSE](https://github.com/ito4303/AIC_PMSE)
+    - リポジトリ: [AIC\_PMSE](https://github.com/ito4303/AIC_PMSE)
 - [植生被度階級データの状態空間モデリング](https://doi.org/10.6084/m9.figshare.14252693.v1)（第132回日本森林学会大会）
     - リポジトリ: [jfs132](https://github.com/ito4303/jfs132)
 - [R, BUGS, Stanによる階層モデルのあてはめ](https://doi.org/10.6084/m9.figshare.14229572.v1)（第68回日本生態学会大会）
@@ -32,7 +34,7 @@
 
 ## リンク
 
-- [伊東ウェブ](https://ito4303.sakura.ne.jp/)
+- [伊東生態統計ラボ](https://ito4303.sakura.ne.jp/)
     - [Blog](https://ito4303.sakura.ne.jp/posts.html)
 - [Taglibro de H](https://ito-hi.blog.ss-blog.jp/)
 - [GitHub](https://github.com/ito4303)
