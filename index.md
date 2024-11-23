@@ -2,6 +2,22 @@
 
 ## 各種発表ファイル
 
+- Kanazawa.R #2 (2024-11-23)
+    - [データの読み込みから可視化](https://ito4303.github.io/KanazawaR002/introduction.html)
+    - [(初心者チュートリアル資料)データの読み込みから可視化](https://ito4303.github.io/KanazawaR002/tutorial.html)
+    - [ベイズ統計モデリングとMCMC](https://ito4303.github.io/KanazawaR002/statmodel_mcmc.html)
+    - [不完全なカウントデータから動物の個体数を推定する](https://ito4303.github.io/KanazawaR002/nmix.html)
+    - [リポジトリ](https://github.com/ito4303/KanazawaR002)
+
+- [TMBによる最尤推定](https://ito4303.github.io/TMB.html) (2024-10-19 第115回 Tokyo.R)
+    - リポジトリ[TokyoR115](https://github.com/ito4303/TokyoR115)
+- Kanazawa.R #1 (2024-06-29)
+    - [Rをつかってみよう](https://ito4303.github.io/KanazawaR001/introduction.html)
+    - [Rをつかってみる（実演）](https://ito4303.github.io/KanazawaR001/tutorial.html)
+    - [Tidyなデータ処理](https://ito4303.github.io/KanazawaR001/tidy_data.html)
+    - [ggplot2によるデータ可視化](https://ito4303.github.io/KanazawaR001/ggplot2.html)
+    - [Rで生物多様性情報を取得する](https://ito4303.github.io/KanazawaR001/rgbif.html)
+    - [リポジトリ](https://github.com/ito4303/KanazawaR001)
 - [Rで生物多様性情報を取得する](https://ito4303.github.io/TokyoR113.html) (2024-06-08 第113回 Tokyo.R)
     - リポジトリ[TokyoR113](https://github.com/ito4303/TokyoR113)
 - [Quartoでウェブサイトをつくってみた](https://ito4303.github.io/SappoRoR11.html) (2024-02-17 SappoRo.R #11)
