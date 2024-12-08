@@ -3306,7 +3306,7 @@ vertical-align: -.125em;
 </div>
 <p>次に全国のデータを、総数・男・女の別に表示します。</p>
 <p>まず、<code>dplyr::filter</code>関数で全国のデータだけ残します。この関数の返り値をパイプ演算子で次の行の<code>ggplot</code>関数に渡しています。</p>
-<p><code>ggplot</code>関数の<code>mapping</code>引数では、<code>aes関数</code>で<code>colour = `男女`</code>と引数を与えることで、<code>男女</code>列の要素別に色分けして線を引きます。また、ggthemesパッケージの<code>scale_colour_manual</code>で、各要素の色を指定しています（カラーユニバーサルデザイン対応）。</p>
+<p><code>ggplot</code>関数の<code>mapping</code>引数では、<code>aes関数</code>で<code>colour = `男女`</code>と引数を与えることで、<code>男女</code>列の要素別に色分けして線を引きます。また、<code>scale_colour_manual</code>で各要素の色を指定しています（カラーユニバーサルデザイン対応）。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pref_data2 <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;全国&quot;</span>) <span class="sc">|&gt;</span></span>
