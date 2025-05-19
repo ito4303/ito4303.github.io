@@ -1,0 +1,132 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rをはじめよう",
+    "section": "",
+    "text": "はじめに\nRは、統計分析向けに開発されたプログラミング言語です。といっても、単なるプログラミング言語というだけではなく、統計分析やグラフ作成のための環境でもあります。SASなどの効果なソフトウェアとは違って、無償で使用することができます。また、オープンソースソフトウェアですので、内部でどのような処理をしているのか確認したり、必要に応じて改造したりすることもできます。\nRでは、コマンドを手で入力して、スクリプトを作成していく作業が基本となります。そのため、最初は少し取っつきにくいかもしれません。しかし、一度スクリプトを作成しておけば、別のデータに対して再利用したり、設定を変えて再実行したりすることが簡単にできます。慣れてしまえば便利に使えると思います。どうしてもコマンドの入力になじめないという方には、グラフィカルユーザーインターフェイス(GUI)環境もあります。こちらは基本的にマウス操作でRを使うことができます。ただ、GUI環境を使う際も、再利用性や再現可能性のためスクリプトを保存しておくことをお勧めします。このとき、スクリプトでどのような処理をおこなっているかがわかるということも大事ですので、やはりRのスクリプトが読めることが大切になります。\nまた、Rを使う際には、RStudioという統合開発環境（IDE）を利用すると便利です。RStudioも無償で利用できるオープンソースソフトウェアです（有償版もあります）。RStudioは、Rスクリプトの作成、保存、実行のほか、グラフの描画などもできます。R以外にも、PythonやStanなどのスクリプトも書けますので、このようなほかの言語を組み合わせて使うこともできます。\nこの本では、RとRStudioのインストールから、基本的な使い方までを説明します。",
+    "crumbs": [
+      "はじめに"
+    ]
+  },
+  {
+    "objectID": "install.html",
+    "href": "install.html",
+    "title": "1  RとRStudioのインストール（Windows & Mac）",
+    "section": "",
+    "text": "1.1 Rのインストール\nまずはRをインストールするところから始めます。それから、RStudioもインストールします。\nなお、この記事の作成でインストールしたバージョンは、Rが4.5.0、RStudioが2025.05+496です。インストール先のOSのバージョンは、WindowsがWindows 11 23H2、MacがmacOS Sequoia 15.5 (Apple Silicon) です。\nRのインストーラーはCRAN（「しーらん」または「くらん」）からダウンロードできます（図 1.1）。CRANは世界各地にミラーがあり、日本では山形大学に置かれています（https://ftp.yz.yamagata-u.ac.jp/pub/cran/）。このほか、 クラウドに置かれているものも利用できます（https://cloud.r-project.org）。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>RとRStudioのインストール（Windows & Mac）</span>"
+    ]
+  },
+  {
+    "objectID": "install.html#rのインストール",
+    "href": "install.html#rのインストール",
+    "title": "1  RとRStudioのインストール（Windows & Mac）",
+    "section": "",
+    "text": "図 1.1: 各種OS向けのRダウンロードページ\n\n\n\n\n1.1.1 WindowsでのRのインストール\nWindowsでRをインストールするには、手動でインストーラーをダウンロードしてインストールする方法と、パッケージマネージャーのwingetを使用してインストールする方法があります。\n\n1.1.1.1 インストーラーのダウンロード\nCRANのRダウンロードページ（図 1.1） の“Download R for Windows”のリンク先へ移動します。次の画面（ 図 1.2）で、baseを選択します。\n\n\n\n\n\n\n図 1.2: Windows版Rのダウンロード物の選択画面（R本体はbaseを選択）\n\n\n\n次の画面（図 1.3）でインストーラーをダウンロードします（“4.5.0”のところはバージョンによって変わります）。\n\n\n\n\n\n\n図 1.3: Windows版Rインストーラーのダウンロード画面\n\n\n\n\n\n1.1.1.2 インストール\nダウンロードできたらインストーラーを起動します。\n起動すると、「このアプリにがデバイスに変更を加えることを許可しますか?」と尋ねられますので、「はい」を押します（図 1.4）。\n\n\n\n\n\n\n図 1.4: Rインストーラー起動時のユーザーアカウント制御ウィンドウ\n\n\n\nつづいて、「セットアップに使用する言語の選択」（ 図 1.5）となります。「日本語」がデフォルトになっていますので、そのまま「OK」を押します。\n\n\n\n\n\n\n図 1.5: セットアップに使用する言語の選択\n\n\n\nその次はライセンスの承認です（ 図 1.6）。「GPLv2」というライセンスです。通常は問題ないでしょうから「次へ」を押します。\n\n\n\n\n\n\n図 1.6: ライセンスのウィンドウ\n\n\n\nさらにその次は、インストール先の指定です（ 図 1.7）。以前はCドライブ直下にしたほうがよいという話もありましたが、現在はそのままで問題ないようです。\n\n\n\n\n\n\n図 1.7: 「インストール先の指定」ウィンドウ\n\n\n\nひきつづきコンポーネントの選択です（ 図 1.8）。通常はデフォルトのままでよいでしょう。\n\n\n\n\n\n\n図 1.8: 「コンポーネントの選択」ウィンドウ\n\n\n\nその次は起動時オプションです（ 図 1.9）。これもデフォルトのままでよいでしょう。\n\n\n\n\n\n\n図 1.9: 「起動時オプション」のウィンドウ\n\n\n\n最後に追加タスクの選択です（ 図 1.10）。デフォルトでもよいですが、デスクトップにアイコンが不要という方は、一番上のチェックを外しましょう。\n\n\n\n\n\n\n図 1.10: 「追加タスクの選択」のウィンドウ\n\n\n\nここまでくるとインストールが開始されます。しばらくすると完了します（ 図 1.11）。おつかれさまでした。\n\n\n\n\n\n\n図 1.11: セットアップウィザードの完了のウィンドウ\n\n\n\n\n\n1.1.1.3 wingetでのインストール\nwingetはWindows純正のパッケージマネージャーです。コマンド入力操作が必要になりますが、これを使ってRをインストールすることも可能です。\nwingetを使ってRをインストールするには、PowerShellなどで以下のコマンドを打ち込んでください。\nwinget install -e --id RProject.R\nこれだけで、Rのインストーラーのダウンロードと、インストールをやってくれます。\n\n\n\n1.1.2 MacでのRのインストール\nMacでRをインストールするには、手動でインストーラーをダウンロードしてインストールする方法と、パッケージマネージャーのHomebrewを使用してインストールする方法があります。\n\n1.1.2.1 インストーラーのダウンロード\nCRANのRダウンロードページ（図 1.1）の“Download R for macOS”のリンク先へ移動します。移動先の画面（図 1.12）で、お使いのマシンのCPUにあわせてamd64版(Apple Silicon)か、x86版(Intel)を選択します。\n\n\n\n\n\n\n図 1.12\n\n\n\n\n\n1.1.2.2 インストール\nダウンロードできたら、インストーラーを起動します。ここではApple Silicon版をインストールしていますが、Intel版でも同様です。起動したら、まず最初のウィンドウ（図 1.13）で「続ける」を押します。\n\n\n\n\n\n\n図 1.13: Mac版インストーラー起動後のウィンドウ\n\n\n\nすると「大切な情報」としてインストールされるパッケージの説明が表示されます（図 1.14）。確認したら「続ける」を押します。\n\n\n\n\n\n\n図 1.14: 「大切な情報」のウィンドウ\n\n\n\n次に、使用許諾契約（ライセンス）が表示されます。ライセンスは「GPLv2」です。通常は問題がないでしょうからそのまま「続ける」を押します。\n\n\n\n\n\n\n図 1.15: ライセンスのウィンドウ\n\n\n\nそうすると、確認のダイアログがでますので（図 1.16）、「同意する」を押します。\n\n\n\n\n\n\n図 1.16: ライセンス確認ダイアログ\n\n\n\nその次は、「標準インストール」か「カスタムインストール」かの選択です。デフォルトでは「標準インストール」（図 1.17）ですので、通常はこのまま「インストール」ボタンを押してよいでしょう。\n\n\n\n\n\n\n図 1.17: 「標準インストール」のウィンドウ\n\n\n\n「インストール」ではなく、「カスタマイズ」ボタンを押すと 図 1.18 の画面になります。よくわからないようならとりあえずこのまま「インストール」ボタンを押してよいでしょう。\n\n\n\n\n\n\n図 1.18: 「カスタムインストール」のウィンドウ\n\n\n\n「インストール」ボタンを押すとインストールが始まり、やがて完了画面となります（図 1.19）。「閉じる」ボタンを押すと、インストーラーをゴミ箱に入れるか尋ねられますが、お好きなほうを選んでください。これでインストールは終了です。\n\n\n\n\n\n\n図 1.19: Rのインストール完了ウィンドウ\n\n\n\n\n\n\n1.1.3 Homebrewでのインストール\nHomebrewはmacOS向けのパッケージマネージャーです。コマンド入力操作が必要になりますが、これを使ってRをインストールすることも可能です。\nHomebrew自体がインストール済みでしたら、ターミナルで以下のコマンドを打ち込んでください。\nbrew install --cask r\nすると、Rインストーラーのダウンロードとインストールまでやってくれます。",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>RとRStudioのインストール（Windows & Mac）</span>"
+    ]
+  },
+  {
+    "objectID": "install.html#rstudioのインストール",
+    "href": "install.html#rstudioのインストール",
+    "title": "1  RとRStudioのインストール（Windows & Mac）",
+    "section": "1.2 RStudioのインストール",
+    "text": "1.2 RStudioのインストール\nRStudioにはサーバー向けのRStudio Serverもありますが、ここではRStudio Desktopをインストールします。\n\n1.2.1 WindowsでのRStudioのインストール\n\n1.2.1.1 インストーラーからインストール\nRStudio Desktopのインストーラーをダウンロードして、起動します。\n「このアプリがデバイスに変更を加えることを許可しますか?」と尋ねられますので（図 1.20）、「はい」を押します。\n\n\n\n\n\n\n図 1.20: Windows版RStudioインストーラーを起動したときの、ユーザーアカウント制御のウィンドウ\n\n\n\nするとセットアップが始まります（図 1.21）。「次へ」ボタンを押して、進みましょう。\n\n\n\n\n\n\n図 1.21: セットアップ開始のウィンドウ\n\n\n\n続いて、インストール先の選択になります（図 1.22）。ここもそのまま「インストール」ボタンを押してよいでしょう。\n\n\n\n\n\n\n図 1.22: 「インストール先の選択」のウィンドウ\n\n\n\nそうするとインストールがはじまります。しばらくするとインストールが完了します（図 1.23）。\n\n\n\n\n\n\n図 1.23: インストール完了のウィンドウ\n\n\n\n起動時に、使用するRを選択するウィンドウが出た場合は（図 1.24）、適切なものを選択します。通常は“64-bit version”でしょうから、そうなっているようでしたら、そのまま「OK」を押します。\n複数のバージョンのRがインストールされているようでしたら、使用したいバージョンを選択します。\n\n\n\n\n\n\n図 1.24: RStudioで使用するRの選択\n\n\n\n\n\n1.2.1.2 wingetでのインストール\nあるいはwingetを使って、以下のコマンドでインストールできます。\nwinget install -e --id Posit.RStudio\n\n\n\n1.2.2 MacでのRStudioのインストール\n\n1.2.2.1 インストーラーからインストール\nダウンロードしたインストーラーのディスクイメージを開きます。開いたウィンドウ（図 1.25）で、 RStudioのアイコンをドラッグして、Applicationsフォルダ（のエイリアス）にドロップしてください。これでインストール完了です。\n\n\n\n\n\n\n図 1.25\n\n\n\n\n\n1.2.2.2 Homebrewでのインストール\nあるいは、Homebrewでは以下のコマンドでインストールできます。\nbrew install --cask rstudio",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>RとRStudioのインストール（Windows & Mac）</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html",
+    "href": "rstudio.html",
+    "title": "2  RStudioの基本操作",
+    "section": "",
+    "text": "2.1 プロジェクト\nプロジェクトは、RStudioで作業をおこなうときの基本単位です。\nFile &gt; New Project…\n“Browse…”ボタンでプロジェクトのディレクトリを保存する（上位）ディレクトリを指定します。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#プロジェクト",
+    "href": "rstudio.html#プロジェクト",
+    "title": "2  RStudioの基本操作",
+    "section": "",
+    "text": "RStudioの新規プロジェクト作成ウィザード\n\n\n\n\n\n\n\n\n図 2.1: プロジェクトタイプの選択\n\n\n\n\n\n\n\n\n\n\n図 2.2: 新規プロジェクトの保存先の指定",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#ファイルの作成",
+    "href": "rstudio.html#ファイルの作成",
+    "title": "2  RStudioの基本操作",
+    "section": "2.2 ファイルの作成",
+    "text": "2.2 ファイルの作成\nFile &gt; New File &gt; R Script\n左上にエディタが出現",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html",
+    "href": "r_basic.html",
+    "title": "3  Rの基本操作",
+    "section": "",
+    "text": "3.1 基本演算\n加減乗除は、それぞれ”+“,”-“,”*“,”/“の演算子でできます。\n1 + 2\n\n[1] 3\n3 - 4\n\n[1] -1\n5 * 6\n\n[1] 30\n7 / 8\n\n[1] 0.875\n答えの先頭についている”[1]“はとりあえず気にしなくて構いません。",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html#データ型",
+    "href": "r_basic.html#データ型",
+    "title": "3  Rの基本操作",
+    "section": "3.2 データ型",
+    "text": "3.2 データ型\n数値型 (numeric)\n文字列型 (character)\n因子型 (factor)\n論理型 (logical)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html#ベクトル",
+    "href": "r_basic.html#ベクトル",
+    "title": "3  Rの基本操作",
+    "section": "3.3 ベクトル",
+    "text": "3.3 ベクトル\nc()は、ベクトルを作る関数です。\n\nc(1.2, 2.3, 3.4, 4.5)\n\n[1] 1.2 2.3 3.4 4.5\n\n\n“:”（コロン）は連続した数値（差が1または-1）からなるベクトルを生成する演算子です。\n\n1:50\n\n [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22\n[23] 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44\n[45] 45 46 47 48 49 50\n\n\nここで、[23]とか[45]とあるのは、ここからそれぞれ23番目と45番目の要素を表示するということをしめしています。",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html#変数",
+    "href": "r_basic.html#変数",
+    "title": "3  Rの基本操作",
+    "section": "3.4 変数",
+    "text": "3.4 変数",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html#データフレーム",
+    "href": "r_basic.html#データフレーム",
+    "title": "3  Rの基本操作",
+    "section": "3.5 データフレーム",
+    "text": "3.5 データフレーム",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "r_basic.html#基本統計関数",
+    "href": "r_basic.html#基本統計関数",
+    "title": "3  Rの基本操作",
+    "section": "3.6 基本統計関数",
+    "text": "3.6 基本統計関数",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  }
+]
