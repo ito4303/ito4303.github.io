@@ -141,8 +141,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#プロジェクト" id="toc-プロジェクト" class="nav-link active" data-scroll-target="#プロジェクト"><span class="header-section-number">2.1</span> プロジェクト</a></li>
-  <li><a href="#ファイルの作成" id="toc-ファイルの作成" class="nav-link" data-scroll-target="#ファイルの作成"><span class="header-section-number">2.2</span> ファイルの作成</a></li>
+  <li><a href="#設定" id="toc-設定" class="nav-link active" data-scroll-target="#設定"><span class="header-section-number">2.1</span> 設定</a></li>
+  <li><a href="#プロジェクト" id="toc-プロジェクト" class="nav-link" data-scroll-target="#プロジェクト"><span class="header-section-number">2.2</span> プロジェクト</a>
+  <ul class="collapse">
+  <li><a href="#新規プロジェクトの作成" id="toc-新規プロジェクトの作成" class="nav-link" data-scroll-target="#新規プロジェクトの作成"><span class="header-section-number">2.2.1</span> 新規プロジェクトの作成</a></li>
+  </ul></li>
+  <li><a href="#ファイルの作成" id="toc-ファイルの作成" class="nav-link" data-scroll-target="#ファイルの作成"><span class="header-section-number">2.3</span> ファイルの作成</a></li>
   </ul>
 </nav>
     </div>
@@ -168,42 +172,101 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="プロジェクト" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="プロジェクト"><span class="header-section-number">2.1</span> プロジェクト</h2>
-<p>プロジェクトは、RStudioで作業をおこなうときの基本単位です。</p>
-<p>File &gt; New Project…</p>
-<div id="figrstudio-create-project" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="figures/rstudio-create-project.png" class="img-fluid figure-img" width="480"></p>
-<figcaption>RStudioの新規プロジェクト作成ウィザード</figcaption>
+<section id="設定" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="設定"><span class="header-section-number">2.1</span> 設定</h2>
+<p>RStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（<a href="#fig-rstudio-global-options" class="quarto-xref">図&nbsp;<span>2.1</span></a>）。</p>
+<div id="fig-rstudio-global-options" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-global-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/rstudio-global-options.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-global-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.1: RStudioのGlobal Options設定ウィンドウ
+</figcaption>
 </figure>
 </div>
+<p>設定項目はたくさんありますが、まずはPackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておくとよいでしょう。Change…ボタンを押すとCRAN Mirrors:の選択肢が現れます（<a href="#fig-rstudio-CRAN-Mirrors" class="quarto-xref">図&nbsp;<span>2.2</span></a>）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。</p>
+<div id="fig-rstudio-CRAN-Mirrors" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-CRAN-Mirrors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/rstudio-CRAN-Mirrors.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-CRAN-Mirrors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.2: RStudioのCRAN Mirrorsの設定
+</figcaption>
+</figure>
+</div>
+<p>またGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（<a href="#fig-rstudio-graphics-device" class="quarto-xref">図&nbsp;<span>2.3</span></a>）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。</p>
+<div id="fig-rstudio-graphics-device" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-graphics-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/rstudio-graphics-device.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-graphics-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.3: RStudioのGraphics Deviceの設定
+</figcaption>
+</figure>
+</div>
+<p>その他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。</p>
+<p>一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。</p>
+</section>
+<section id="プロジェクト" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="プロジェクト"><span class="header-section-number">2.2</span> プロジェクト</h2>
+<p>プロジェクトは、RStudioで作業をおこなうときの基本単位です。</p>
+<section id="新規プロジェクトの作成" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="新規プロジェクトの作成"><span class="header-section-number">2.2.1</span> 新規プロジェクトの作成</h3>
+<p>メニューから、File &gt; New Project… と選択します。すると新規プロジェクト作成ウィザード（<a href="#fig-rstudio-create-project" class="quarto-xref">図&nbsp;<span>2.4</span></a>）が現れます。</p>
+<p>ここで、まっさらなところからプロジェクトをつくるなら、“New Directory”を選択します。既存のディレクトリにすでに何らかのファイルが用意されているようなら、“Existing Directory”を選択します。また、GitHubなどのレポジトリからプロジェクトをチェックアウトする場合には、“Version Control”を選択します。</p>
+<p>ここでは”New Directory”で進めます。</p>
+<div id="fig-rstudio-create-project" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/rstudio-create-project.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.4: RStudioの新規プロジェクト作成ウィザード
+</figcaption>
+</figure>
+</div>
+<p>つづいて、プロジェクトタイプの選択になります（<a href="#fig-rstudio-project-type" class="quarto-xref">図&nbsp;<span>2.5</span></a>）。通常は”New Project”でよいでしょう。</p>
 <div id="fig-rstudio-project-type" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rstudio-project-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/rstudio-project-type.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-project-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.1: プロジェクトタイプの選択
+図&nbsp;2.5: プロジェクトタイプの選択
 </figcaption>
 </figure>
 </div>
-<p>“Browse…”ボタンでプロジェクトのディレクトリを保存する（上位）ディレクトリを指定します。</p>
+<p>そうすると、新規プロジェクトの保存先の指定（<a href="#fig-rstudio-create-new-project" class="quarto-xref">図&nbsp;<span>2.6</span></a>）になります。 “Directory name:” のところには、プロジェクトのディレクトリ名を入力します。また、“Browse…”ボタンでプロジェクトのディレクトリを保存する（上位）ディレクトリを指定します。</p>
+<p>最後に”Create Project”ボタンを押すと、新規プロジェクトの作成が完了します。</p>
 <div id="fig-rstudio-create-new-project" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rstudio-create-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/rstudio-create-new-project.png" class="img-fluid figure-img" width="480">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-create-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.2: 新規プロジェクトの保存先の指定
+図&nbsp;2.6: 新規プロジェクトの保存先の指定
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="ファイルの作成" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="ファイルの作成"><span class="header-section-number">2.2</span> ファイルの作成</h2>
-<p>File &gt; New File &gt; R Script</p>
-<p>左上にエディタが出現</p>
+</section>
+<section id="ファイルの作成" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="ファイルの作成"><span class="header-section-number">2.3</span> ファイルの作成</h2>
+<p>では新しくRスクリプトのファイルを作成しましょう。メニューで、File &gt; New File &gt; R Script と選択します。すると、ウィンドウの左上にエディタが出現します（<a href="#fig-rstudio-window" class="quarto-xref">図&nbsp;<span>2.7</span></a>）。このエディタでRスクリプトを作成します。</p>
+<div id="fig-rstudio-window" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/rstudio-window.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;2.7: R Studioの新規プロジェクトで新しいRスクリプトを作成したところ（Mac版）
+</figcaption>
+</figure>
+</div>
+<p>作成しているRスクリプトを保存するには、メニューから File &gt; Save と選択します。まだ保存したことのないスクリプトでしたら、ファイル保存のダイアログが出てきますので、プロジェクトのディレクトリ内に保存します。</p>
 
 
 </section>
