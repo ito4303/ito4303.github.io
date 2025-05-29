@@ -14,7 +14,7 @@
     "href": "install.html",
     "title": "1  RとRStudioのインストール（Windows & Mac）",
     "section": "",
-    "text": "1.1 Rのインストール\nまずはRをインストールするところから始めます。それから、RStudioもインストールします。\nなお、この記事の作成でインストールしたバージョンは、Rが4.5.0、RStudioが2025.05+496です。インストール先のOSのバージョンは、WindowsがWindows 11 23H2、MacがmacOS Sequoia 15.5 (Apple Silicon) です。\nRのインストーラーはCRAN（「しーらん」または「くらん」）からダウンロードできます（図 1.1）。CRANは世界各地にミラーがあり、日本では山形大学に置かれています（https://ftp.yz.yamagata-u.ac.jp/pub/cran/）。このほか、 クラウドに置かれているものも利用できます（https://cloud.r-project.org）。",
+    "text": "1.1 Rのインストール\nまずはRをインストールするところから始めます。それから、RStudioもインストールします。\nなお、この記事の作成でインストールしたバージョンは、Rが4.5.0、RStudioが2025.05+496です。インストール先のOSのバージョンは、WindowsがWindows 11 23H2、MacがmacOS Sequoia 15.5 (Apple Silicon) です。\nRのインストーラーはCRAN（Comprehensive R Archive Network, 「しーらん」または「くらん」）からダウンロードできます（図 1.1）。CRANは世界各地にミラーがあり、日本では山形大学に置かれています（https://ftp.yz.yamagata-u.ac.jp/pub/cran/）。このほか、 クラウドに置かれているものも利用できます（https://cloud.r-project.org）。",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>RとRStudioのインストール（Windows & Mac）</span>"
     ]
@@ -44,7 +44,7 @@
     "href": "rstudio.html",
     "title": "2  RStudioの基本操作",
     "section": "",
-    "text": "2.1 設定\nRStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（図 2.1）。\n設定項目はたくさんありますが、まずはPackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておくとよいでしょう。Change…ボタンを押すとCRAN Mirrors:の選択肢が現れます（図 2.2）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。\nまたGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（図 2.3）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。\nその他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。\n一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。",
+    "text": "2.1 設定\nRStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（図 2.1）。\n設定項目はたくさんありますが、まずはGeneral（図 2.1）で、Workspaceの”Restore .RData into workspace at startup”のチェックを外し、“Save workspace to .RData on exit:”を”Never”にしておくとよいでしょう。これは、前に実行したデータが残っていると、作業工程の再現可能性が損なわれるおそれがあるからです。\n次に、PackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておきましょう。ここで設定したCRANリポジトリがパッケージのインストールで使用されます（パッケージについては セクション 3.8 を参照してください）。\nChange…ボタンを押すとCRAN Mirrors:の選択肢が現れます（図 2.2）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。\nまたGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（図 2.3）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。\nその他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。\n一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
     ]
@@ -54,7 +54,7 @@
     "href": "rstudio.html#設定",
     "title": "2  RStudioの基本操作",
     "section": "",
-    "text": "図 2.1: RStudioのGlobal Options設定ウィンドウ\n\n\n\n\n\n\n\n\n\n\n図 2.2: RStudioのCRAN Mirrorsの設定\n\n\n\n\n\n\n\n\n\n\n図 2.3: RStudioのGraphics Deviceの設定",
+    "text": "図 2.1: RStudioのGlobal Options設定ウィンドウ\n\n\n\n\n\n\n\n\n\n\n\n\n図 2.2: RStudioのCRAN Mirrorsの設定\n\n\n\n\n\n\n\n\n\n\n図 2.3: RStudioのGraphics Deviceの設定",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
     ]
@@ -75,6 +75,16 @@
     "title": "2  RStudioの基本操作",
     "section": "2.3 ファイルの作成",
     "text": "2.3 ファイルの作成\nでは新しくRスクリプトのファイルを作成しましょう。メニューで、File &gt; New File &gt; R Script と選択します。すると、ウィンドウの左上にエディタが出現します（図 2.7）。このエディタでRスクリプトを作成します。\n\n\n\n\n\n\n図 2.7: R Studioの新規プロジェクトで新しいRスクリプトを作成したところ（Mac版）\n\n\n\n作成しているRスクリプトを保存するには、メニューから File &gt; Save と選択します。まだ保存したことのないスクリプトでしたら、ファイル保存のダイアログが出てきますので、プロジェクトのディレクトリ内に保存します。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "rstudio.html#ペイン",
+    "href": "rstudio.html#ペイン",
+    "title": "2  RStudioの基本操作",
+    "section": "2.4 ペイン",
+    "text": "2.4 ペイン\n新規にファイルを作成したところで、RStudioのウィンドウは4つのペインが表示される形になっていると思います（図 2.7）。\n左上は前節で説明したとおり、Rスクリプトなどのファイルを編集するエディタのペインです。\n左下には3つのタブがあって、ペインを切り替えられるようになっています。Consoleは、Rのコンソールで、実行結果がここに表示されます。Terminalは、OSのシェルを実行できるターミナルです。Background Jobsには、バックグラウンドで実行されるジョブの状況が表示されます。\n右上には、Environment、History、Connections、Tutorialのタブがあります。Environmentには、変数やデータフレームなどのオブジェクトのリストが表示されます。Historyは、実行したコマンドの履歴です。Connectionsは、接続しているデータベースの情報が表示されます。Tutorialは、learnrパッケージによるチュートリアルです（learnrパッケージのインストールが必要です）。また、状況に応じてBuildやGitといったタブが現れます。\n右下は、Files、Plots、Packages、Help、Viewer、Presentationのタブがあります。Filesには、プロジェクトディレクトリ内のファイルが表示されます。Plotsは、作成したグラフが表示されるところです。Packagesには、インストール済みのパッケージの一覧があります。左にあるチェックボックスをクリックすると、パッケージの読み込みができます。Helpは、ヘルプを表示するペインです。Viewerは、ローカルなウェブコンテントが表示されます。インタラクティブな地図表示などで利用されます。Presentationは、RMarkdownなどで作成したプレゼンテーションが表示されるところです。\nこれらのペインの配置は、Global Options（図 2.1）のPane Layoutで変更できます。詳細は、RStudio User GuideのPane Layoutを参照してください。\nまた、RStudioの使用方法については参考文献(1)に詳しい説明があります。\n\n\n\n\n(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛. RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）. 東京, 技術評論社, 2021, ISBN978-4-297-12170-9.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
     ]
@@ -150,13 +160,23 @@
     ]
   },
   {
-    "objectID": "r_basic.html#パッケージとは",
-    "href": "r_basic.html#パッケージとは",
+    "objectID": "r_basic.html#sec-package",
+    "href": "r_basic.html#sec-package",
     "title": "3  Rの基本操作",
     "section": "3.8 パッケージとは",
-    "text": "3.8 パッケージとは\nパッケージとは、R本体にはない解析手法や、グラフィック環境、データなどをひとまとまりにまとめて扱えるようにしたものです。パッケージは、ユーザーが自分で作成して公開することもできます。そのため、非常にたくさんのパッケージを利用することができます。\n\n3.8.1 パッケージを探す\nCRAN Task View\nBioconductor\n\n\n3.8.2 パッケージをインストールする\ninstall.packages()関数を使用します。以下の例ではggplot2パッケージをインストール指定しています。“dependencies = TRUE”という引数をつけると、依存パッケージも同時にインストールされます。\n\ninstall.packages(\"ggplot2\", dependencies = TRUE)\n\nRStudioでしたら、メニューの Tools &gt; Install Packages… からインストールすることもできます。\n\n\n3.8.3 パッケージを使う\nlibrary()関数でパッケージを読み込みます。下の例ではggplot2パッケージを読み込んでいます。ggplot2パッケージは、統一された文法でグラフを作成できるパッケージです。\n\nlibrary(ggplot2)\n\nこれによりggplot2パッケージの関数が使えるようになります。以下ではggplot2を用いて散布図を描画しています。\n\nggplot(data.frame(x = 1:10, y = (1:10) * 0.5),\n       aes(x, y)) +\n  geom_point()",
+    "text": "3.8 パッケージとは\nパッケージとは、R本体にはない解析手法や、グラフィック環境、データなどをひとまとまりにまとめて扱えるようにしたものです。パッケージは、ユーザーが自分で作成して公開することもできます。そのため、非常にたくさんのパッケージを利用することができます。\n\n3.8.1 パッケージを探す\nCRANには2万を超えるパッケージが登録されています。CRAN Task Viewsでは、さまざまな分野について、よく使われるパッケージを紹介しています。\nCRANのほかにもパッケージを登録しているところがあります。Bioconductorでは生物情報学関連のパッケージを集めています。\nこのほか、GitHubなどで作者が独自に公開しているパッケージもあります。検索エンジンで探してみたり、AIに尋ねてみたりするのもよいでしょう。\n\n\n3.8.2 パッケージをインストールする\nCRANからパッケージをインストールするには、install.packages()関数を使用します。以下の例ではggplot2パッケージをインストールしています。“dependencies = TRUE”という引数をつけると、依存パッケージも同時にインストールされます。\n\ninstall.packages(\"ggplot2\", dependencies = TRUE)\n\nRStudioでしたら、メニューの Tools &gt; Install Packages… からインストールすることもできます。\n\n\n3.8.3 パッケージを使う\nlibrary()関数でパッケージを読み込みます。下の例ではggplot2パッケージを読み込んでいます。ggplot2パッケージは、統一された文法でグラフを作成できるパッケージです。\n\nlibrary(ggplot2)\n\nこれによりggplot2パッケージの関数が使えるようになります。以下ではggplot2を用いて散布図を描画しています。\n\nggplot(data.frame(x = 1:10, y = (1:10) * 0.5),\n       aes(x, y)) +\n  geom_point()",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Rの基本操作</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "参考文献",
+    "section": "",
+    "text": "(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛.\nRユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）.\n東京, 技術評論社, 2021, ISBN978-4-297-12170-9.",
+    "crumbs": [
+      "参考文献"
     ]
   }
 ]

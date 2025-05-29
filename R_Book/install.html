@@ -166,6 +166,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rの基本操作</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -216,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>なお、この記事の作成でインストールしたバージョンは、Rが4.5.0、RStudioが2025.05+496です。インストール先のOSのバージョンは、WindowsがWindows 11 23H2、MacがmacOS Sequoia 15.5 (Apple Silicon) です。</p>
 <section id="rのインストール" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="rのインストール"><span class="header-section-number">1.1</span> Rのインストール</h2>
-<p>Rのインストーラーは<a href="https://cran.r-project.org">CRAN</a>（「しーらん」または「くらん」）からダウンロードできます（<a href="#fig-cran-download" class="quarto-xref">図&nbsp;<span>1.1</span></a>）。CRANは世界各地にミラーがあり、日本では山形大学に置かれています（<a href="https://ftp.yz.yamagata-u.ac.jp/pub/cran/" class="uri">https://ftp.yz.yamagata-u.ac.jp/pub/cran/</a>）。このほか、 クラウドに置かれているものも利用できます（<a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>）。</p>
+<p>Rのインストーラーは<a href="https://cran.r-project.org">CRAN</a>（Comprehensive R Archive Network, 「しーらん」または「くらん」）からダウンロードできます（<a href="#fig-cran-download" class="quarto-xref">図&nbsp;<span>1.1</span></a>）。CRANは世界各地にミラーがあり、日本では山形大学に置かれています（<a href="https://ftp.yz.yamagata-u.ac.jp/pub/cran/" class="uri">https://ftp.yz.yamagata-u.ac.jp/pub/cran/</a>）。このほか、 クラウドに置かれているものも利用できます（<a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>）。</p>
 <div id="fig-cran-download" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cran-download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -361,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="インストーラーのダウンロード-1" class="level4" data-number="1.1.2.1">
 <h4 data-number="1.1.2.1" class="anchored" data-anchor-id="インストーラーのダウンロード-1"><span class="header-section-number">1.1.2.1</span> インストーラーのダウンロード</h4>
 <p>CRANのRダウンロードページ（<a href="#fig-cran-download" class="quarto-xref">図&nbsp;<span>1.1</span></a>）の“Download R for macOS”のリンク先へ移動します。移動先の画面（<a href="#fig-mac-download-R" class="quarto-xref">図&nbsp;<span>1.12</span></a>）で、お使いのマシンのCPUにあわせてamd64版(Apple Silicon)か、x86版(Intel)を選択します。</p>
-<div id="fig-mac-download-R" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac版インストーラーのダウンロード画面" width="480">
+<div id="fig-mac-download-R" class="quarto-float quarto-figure quarto-figure-center anchored" width="480" alt="Mac版インストーラーのダウンロード画面">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mac-download-R-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/mac_download_R-01.png" id="fig-mac-download-R" class="img-fluid figure-img" alt="Mac版インストーラーのダウンロード画面" width="480">
@@ -537,7 +543,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="インストーラーからインストール-1" class="level4" data-number="1.2.2.1">
 <h4 data-number="1.2.2.1" class="anchored" data-anchor-id="インストーラーからインストール-1"><span class="header-section-number">1.2.2.1</span> インストーラーからインストール</h4>
 <p>ダウンロードしたインストーラーのディスクイメージを開きます。開いたウィンドウ（<a href="#fig-mac_install_RStudio-01" class="quarto-xref">図&nbsp;<span>1.25</span></a>）で、 RStudioのアイコンをドラッグして、Applicationsフォルダ（のエイリアス）にドロップしてください。これでインストール完了です。</p>
-<div id="fig-mac_install_RStudio-01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ" width="480">
+<div id="fig-mac_install_RStudio-01" class="quarto-float quarto-figure quarto-figure-center anchored" width="480" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mac_install_RStudio-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/mac_install_RStudio-01.png" id="fig-mac_install_RStudio-01" class="img-fluid figure-img" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ" width="480">

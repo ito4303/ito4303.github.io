@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; RStudioの基本操作 – Rをはじめよう</title>
+<title>参考文献 – Rをはじめよう</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -50,8 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./r_basic.html" rel="next">
-<link href="./install.html" rel="prev">
+<link href="./r_basic.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -102,7 +100,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rstudio.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">RStudioの基本操作</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">参考文献</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -141,7 +139,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rstudio.html" class="sidebar-item-text sidebar-link active">
+  <a href="./rstudio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">RStudioの基本操作</span></span></a>
   </div>
 </li>
@@ -153,7 +151,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">参考文献</span></a>
   </div>
 </li>
@@ -162,27 +160,15 @@ div.csl-indent {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目次</h2>
-   
-  <ul>
-  <li><a href="#設定" id="toc-設定" class="nav-link active" data-scroll-target="#設定"><span class="header-section-number">2.1</span> 設定</a></li>
-  <li><a href="#プロジェクト" id="toc-プロジェクト" class="nav-link" data-scroll-target="#プロジェクト"><span class="header-section-number">2.2</span> プロジェクト</a>
-  <ul class="collapse">
-  <li><a href="#新規プロジェクトの作成" id="toc-新規プロジェクトの作成" class="nav-link" data-scroll-target="#新規プロジェクトの作成"><span class="header-section-number">2.2.1</span> 新規プロジェクトの作成</a></li>
-  </ul></li>
-  <li><a href="#ファイルの作成" id="toc-ファイルの作成" class="nav-link" data-scroll-target="#ファイルの作成"><span class="header-section-number">2.3</span> ファイルの作成</a></li>
-  <li><a href="#ペイン" id="toc-ペイン" class="nav-link" data-scroll-target="#ペイン"><span class="header-section-number">2.4</span> ペイン</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">RStudioの基本操作</span></h1>
+<h1 class="title">参考文献</h1>
 </div>
 
 
@@ -199,121 +185,15 @@ div.csl-indent {
 </header>
 
 
-<section id="設定" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="設定"><span class="header-section-number">2.1</span> 設定</h2>
-<p>RStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（<a href="#fig-rstudio-global-options" class="quarto-xref">図&nbsp;<span>2.1</span></a>）。</p>
-<div id="fig-rstudio-global-options" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-global-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-global-options.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-global-options-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.1: RStudioのGlobal Options設定ウィンドウ
-</figcaption>
-</figure>
-</div>
-<p>設定項目はたくさんありますが、まずはGeneral（<a href="#fig-rstudio-global-options" class="quarto-xref">図&nbsp;<span>2.1</span></a>）で、Workspaceの”Restore .RData into workspace at startup”のチェックを外し、“Save workspace to .RData on exit:”を”Never”にしておくとよいでしょう。これは、前に実行したデータが残っていると、作業工程の再現可能性が損なわれるおそれがあるからです。</p>
-<p>次に、PackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておきましょう。ここで設定したCRANリポジトリがパッケージのインストールで使用されます（パッケージについては <a href="r_basic.html#sec-package" class="quarto-xref"><span>セクション 3.8</span></a> を参照してください）。</p>
-<p>Change…ボタンを押すとCRAN Mirrors:の選択肢が現れます（<a href="#fig-rstudio-CRAN-Mirrors" class="quarto-xref">図&nbsp;<span>2.2</span></a>）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。</p>
-<div id="fig-rstudio-CRAN-Mirrors" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-CRAN-Mirrors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-CRAN-Mirrors.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-CRAN-Mirrors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.2: RStudioのCRAN Mirrorsの設定
-</figcaption>
-</figure>
-</div>
-<p>またGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（<a href="#fig-rstudio-graphics-device" class="quarto-xref">図&nbsp;<span>2.3</span></a>）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。</p>
-<div id="fig-rstudio-graphics-device" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-graphics-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-graphics-device.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-graphics-device-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.3: RStudioのGraphics Deviceの設定
-</figcaption>
-</figure>
-</div>
-<p>その他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。</p>
-<p>一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。</p>
-</section>
-<section id="プロジェクト" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="プロジェクト"><span class="header-section-number">2.2</span> プロジェクト</h2>
-<p>プロジェクトは、RStudioで作業をおこなうときの基本単位です。</p>
-<section id="新規プロジェクトの作成" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="新規プロジェクトの作成"><span class="header-section-number">2.2.1</span> 新規プロジェクトの作成</h3>
-<p>メニューから、File &gt; New Project… と選択します。すると新規プロジェクト作成ウィザード（<a href="#fig-rstudio-create-project" class="quarto-xref">図&nbsp;<span>2.4</span></a>）が現れます。</p>
-<p>ここで、まっさらなところからプロジェクトをつくるなら、“New Directory”を選択します。既存のディレクトリにすでに何らかのファイルが用意されているようなら、“Existing Directory”を選択します。また、GitHubなどのレポジトリからプロジェクトをチェックアウトする場合には、“Version Control”を選択します。</p>
-<p>ここでは”New Directory”で進めます。</p>
-<div id="fig-rstudio-create-project" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-create-project.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-create-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.4: RStudioの新規プロジェクト作成ウィザード
-</figcaption>
-</figure>
-</div>
-<p>つづいて、プロジェクトタイプの選択になります（<a href="#fig-rstudio-project-type" class="quarto-xref">図&nbsp;<span>2.5</span></a>）。通常は”New Project”でよいでしょう。</p>
-<div id="fig-rstudio-project-type" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-project-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-project-type.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-project-type-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.5: プロジェクトタイプの選択
-</figcaption>
-</figure>
-</div>
-<p>そうすると、新規プロジェクトの保存先の指定（<a href="#fig-rstudio-create-new-project" class="quarto-xref">図&nbsp;<span>2.6</span></a>）になります。 “Directory name:” のところには、プロジェクトのディレクトリ名を入力します。また、“Browse…”ボタンでプロジェクトのディレクトリを保存する（上位）ディレクトリを指定します。</p>
-<p>最後に”Create Project”ボタンを押すと、新規プロジェクトの作成が完了します。</p>
-<div id="fig-rstudio-create-new-project" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-create-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-create-new-project.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-create-new-project-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.6: 新規プロジェクトの保存先の指定
-</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="ファイルの作成" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="ファイルの作成"><span class="header-section-number">2.3</span> ファイルの作成</h2>
-<p>では新しくRスクリプトのファイルを作成しましょう。メニューで、File &gt; New File &gt; R Script と選択します。すると、ウィンドウの左上にエディタが出現します（<a href="#fig-rstudio-window" class="quarto-xref">図&nbsp;<span>2.7</span></a>）。このエディタでRスクリプトを作成します。</p>
-<div id="fig-rstudio-window" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-rstudio-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/rstudio-window.png" class="img-fluid figure-img" width="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-window-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;2.7: R Studioの新規プロジェクトで新しいRスクリプトを作成したところ（Mac版）
-</figcaption>
-</figure>
-</div>
-<p>作成しているRスクリプトを保存するには、メニューから File &gt; Save と選択します。まだ保存したことのないスクリプトでしたら、ファイル保存のダイアログが出てきますので、プロジェクトのディレクトリ内に保存します。</p>
-</section>
-<section id="ペイン" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="ペイン"><span class="header-section-number">2.4</span> ペイン</h2>
-<p>新規にファイルを作成したところで、RStudioのウィンドウは4つのペインが表示される形になっていると思います（<a href="#fig-rstudio-window" class="quarto-xref">図&nbsp;<span>2.7</span></a>）。</p>
-<p>左上は前節で説明したとおり、Rスクリプトなどのファイルを編集するエディタのペインです。</p>
-<p>左下には3つのタブがあって、ペインを切り替えられるようになっています。Consoleは、Rのコンソールで、実行結果がここに表示されます。Terminalは、OSのシェルを実行できるターミナルです。Background Jobsには、バックグラウンドで実行されるジョブの状況が表示されます。</p>
-<p>右上には、Environment、History、Connections、Tutorialのタブがあります。Environmentには、変数やデータフレームなどのオブジェクトのリストが表示されます。Historyは、実行したコマンドの履歴です。Connectionsは、接続しているデータベースの情報が表示されます。Tutorialは、learnrパッケージによるチュートリアルです（learnrパッケージのインストールが必要です）。また、状況に応じてBuildやGitといったタブが現れます。</p>
-<p>右下は、Files、Plots、Packages、Help、Viewer、Presentationのタブがあります。Filesには、プロジェクトディレクトリ内のファイルが表示されます。Plotsは、作成したグラフが表示されるところです。Packagesには、インストール済みのパッケージの一覧があります。左にあるチェックボックスをクリックすると、パッケージの読み込みができます。Helpは、ヘルプを表示するペインです。Viewerは、ローカルなウェブコンテントが表示されます。インタラクティブな地図表示などで利用されます。Presentationは、RMarkdownなどで作成したプレゼンテーションが表示されるところです。</p>
-<p>これらのペインの配置は、Global Options（<a href="#fig-rstudio-global-options" class="quarto-xref">図&nbsp;<span>2.1</span></a>）のPane Layoutで変更できます。詳細は、<a href="https://docs.posit.co/ide/user/">RStudio User Guide</a>の<a href="https://docs.posit.co/ide/user/ide/guide/ui/ui-panes.html">Pane Layout</a>を参照してください。</p>
-<p>また、RStudioの使用方法については参考文献<span class="citation" data-cites="Matsumura2021">(<a href="references.html#ref-Matsumura2021" role="doc-biblioref">1</a>)</span>に詳しい説明があります。</p>
-
-
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-Matsumura2021" class="csl-entry" role="listitem">
-<div class="csl-left-margin">(1) </div><div class="csl-right-inline">松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛. RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）. 東京, 技術評論社, 2021, ISBN978-4-297-12170-9.</div>
+<div class="csl-left-margin">(1) </div><div class="csl-right-inline">松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛.
+RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）.
+東京, 技術評論社, 2021, ISBN978-4-297-12170-9.</div>
 </div>
 </div>
-</section>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -717,14 +597,11 @@ div.csl-indent {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./install.html" class="pagination-link" aria-label="RとRStudioのインストール（Windows &amp; Mac）">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">RとRStudioのインストール（Windows &amp; Mac）</span></span>
+      <a href="./r_basic.html" class="pagination-link" aria-label="Rの基本操作">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rの基本操作</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./r_basic.html" class="pagination-link" aria-label="Rの基本操作">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rの基本操作</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

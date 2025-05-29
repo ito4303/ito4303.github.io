@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
 <link href="./rstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -165,6 +166,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Rの基本操作</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -191,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#関数の呼び出しとヘルプの利用" id="toc-関数の呼び出しとヘルプの利用" class="nav-link" data-scroll-target="#関数の呼び出しとヘルプの利用"><span class="header-section-number">3.6</span> 関数の呼び出しとヘルプの利用</a></li>
   <li><a href="#パッケージの利用" id="toc-パッケージの利用" class="nav-link" data-scroll-target="#パッケージの利用"><span class="header-section-number">3.7</span> パッケージの利用</a></li>
-  <li><a href="#パッケージとは" id="toc-パッケージとは" class="nav-link" data-scroll-target="#パッケージとは"><span class="header-section-number">3.8</span> パッケージとは</a>
+  <li><a href="#sec-package" id="toc-sec-package" class="nav-link" data-scroll-target="#sec-package"><span class="header-section-number">3.8</span> パッケージとは</a>
   <ul class="collapse">
   <li><a href="#パッケージを探す" id="toc-パッケージを探す" class="nav-link" data-scroll-target="#パッケージを探す"><span class="header-section-number">3.8.1</span> パッケージを探す</a></li>
   <li><a href="#パッケージをインストールする" id="toc-パッケージをインストールする" class="nav-link" data-scroll-target="#パッケージをインストールする"><span class="header-section-number">3.8.2</span> パッケージをインストールする</a></li>
@@ -762,17 +769,18 @@ $c
 <h2 data-number="3.7" class="anchored" data-anchor-id="パッケージの利用"><span class="header-section-number">3.7</span> パッケージの利用</h2>
 <p>統計解析にRを使用することの利点のひとつは、豊富なパッケージを利用できることです。</p>
 </section>
-<section id="パッケージとは" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="パッケージとは"><span class="header-section-number">3.8</span> パッケージとは</h2>
+<section id="sec-package" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-package"><span class="header-section-number">3.8</span> パッケージとは</h2>
 <p>パッケージとは、R本体にはない解析手法や、グラフィック環境、データなどをひとまとまりにまとめて扱えるようにしたものです。パッケージは、ユーザーが自分で作成して公開することもできます。そのため、非常にたくさんのパッケージを利用することができます。</p>
 <section id="パッケージを探す" class="level3" data-number="3.8.1">
 <h3 data-number="3.8.1" class="anchored" data-anchor-id="パッケージを探す"><span class="header-section-number">3.8.1</span> パッケージを探す</h3>
-<p>CRAN Task View</p>
-<p>Bioconductor</p>
+<p>CRANには2万を超えるパッケージが登録されています。<a href="https://cloud.r-project.org/web/views/">CRAN Task Views</a>では、さまざまな分野について、よく使われるパッケージを紹介しています。</p>
+<p>CRANのほかにもパッケージを登録しているところがあります。<a href="https://www.bioconductor.org">Bioconductor</a>では生物情報学関連のパッケージを集めています。</p>
+<p>このほか、GitHubなどで作者が独自に公開しているパッケージもあります。検索エンジンで探してみたり、AIに尋ねてみたりするのもよいでしょう。</p>
 </section>
 <section id="パッケージをインストールする" class="level3" data-number="3.8.2">
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="パッケージをインストールする"><span class="header-section-number">3.8.2</span> パッケージをインストールする</h3>
-<p><code>install.packages()</code>関数を使用します。以下の例ではggplot2パッケージをインストール指定しています。“<code>dependencies = TRUE</code>”という引数をつけると、依存パッケージも同時にインストールされます。</p>
+<p>CRANからパッケージをインストールするには、<code>install.packages()</code>関数を使用します。以下の例ではggplot2パッケージをインストールしています。“<code>dependencies = TRUE</code>”という引数をつけると、依存パッケージも同時にインストールされます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1209,6 +1217,9 @@ $c
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="参考文献">
+        <span class="nav-page-text">参考文献</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
