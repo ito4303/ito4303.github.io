@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./r_commander.html" rel="next">
 <link href="./rstudio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9b98f18118eee809be1c051eb5cc78e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -168,6 +168,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./r_commander.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Commander</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import_to_graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">データの読み込みからグラフ作成まで</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./geo_space.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">地理空間データの利用</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">参考文献</span></a>
   </div>
@@ -197,8 +215,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#データフレームdata-frame" id="toc-データフレームdata-frame" class="nav-link" data-scroll-target="#データフレームdata-frame"><span class="header-section-number">3.5.2</span> データフレーム（<code>data frame</code>）</a></li>
   </ul></li>
   <li><a href="#関数の呼び出しとヘルプの利用" id="toc-関数の呼び出しとヘルプの利用" class="nav-link" data-scroll-target="#関数の呼び出しとヘルプの利用"><span class="header-section-number">3.6</span> 関数の呼び出しとヘルプの利用</a></li>
-  <li><a href="#パッケージの利用" id="toc-パッケージの利用" class="nav-link" data-scroll-target="#パッケージの利用"><span class="header-section-number">3.7</span> パッケージの利用</a></li>
-  <li><a href="#sec-package" id="toc-sec-package" class="nav-link" data-scroll-target="#sec-package"><span class="header-section-number">3.8</span> パッケージとは</a>
+  <li><a href="#sec-package" id="toc-sec-package" class="nav-link" data-scroll-target="#sec-package"><span class="header-section-number">3.7</span> パッケージの利用</a></li>
+  <li><a href="#パッケージとは" id="toc-パッケージとは" class="nav-link" data-scroll-target="#パッケージとは"><span class="header-section-number">3.8</span> パッケージとは</a>
   <ul class="collapse">
   <li><a href="#パッケージを探す" id="toc-パッケージを探す" class="nav-link" data-scroll-target="#パッケージを探す"><span class="header-section-number">3.8.1</span> パッケージを探す</a></li>
   <li><a href="#パッケージをインストールする" id="toc-パッケージをインストールする" class="nav-link" data-scroll-target="#パッケージをインストールする"><span class="header-section-number">3.8.2</span> パッケージをインストールする</a></li>
@@ -765,12 +783,12 @@ $c
 </div>
 </div>
 </section>
-<section id="パッケージの利用" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="パッケージの利用"><span class="header-section-number">3.7</span> パッケージの利用</h2>
+<section id="sec-package" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="sec-package"><span class="header-section-number">3.7</span> パッケージの利用</h2>
 <p>統計解析にRを使用することの利点のひとつは、豊富なパッケージを利用できることです。</p>
 </section>
-<section id="sec-package" class="level2" data-number="3.8">
-<h2 data-number="3.8" class="anchored" data-anchor-id="sec-package"><span class="header-section-number">3.8</span> パッケージとは</h2>
+<section id="パッケージとは" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="パッケージとは"><span class="header-section-number">3.8</span> パッケージとは</h2>
 <p>パッケージとは、R本体にはない解析手法や、グラフィック環境、データなどをひとまとまりにまとめて扱えるようにしたものです。パッケージは、ユーザーが自分で作成して公開することもできます。そのため、非常にたくさんのパッケージを利用することができます。</p>
 <section id="パッケージを探す" class="level3" data-number="3.8.1">
 <h3 data-number="3.8.1" class="anchored" data-anchor-id="パッケージを探す"><span class="header-section-number">3.8.1</span> パッケージを探す</h3>
@@ -1217,8 +1235,8 @@ $c
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="参考文献">
-        <span class="nav-page-text">参考文献</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./r_commander.html" class="pagination-link" aria-label="R Commander">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R Commander</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

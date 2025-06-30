@@ -44,7 +44,7 @@
     "href": "rstudio.html",
     "title": "2  RStudioの基本操作",
     "section": "",
-    "text": "2.1 設定\nRStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（図 2.1）。\n設定項目はたくさんありますが、まずはGeneral（図 2.1）で、Workspaceの”Restore .RData into workspace at startup”のチェックを外し、“Save workspace to .RData on exit:”を”Never”にしておくとよいでしょう。これは、前に実行したデータが残っていると、作業工程の再現可能性が損なわれるおそれがあるからです。\n次に、PackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておきましょう。ここで設定したCRANリポジトリがパッケージのインストールで使用されます（パッケージについては セクション 3.8 を参照してください）。\nChange…ボタンを押すとCRAN Mirrors:の選択肢が現れます（図 2.2）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。\nまたGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（図 2.3）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。\nその他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。\n一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。",
+    "text": "2.1 設定\nRStudioの設定は、メニューの Tools &gt; Global Options… を選択して、現れたウィンドウでおこないます（図 2.1）。\n設定項目はたくさんありますが、まずはGeneral（図 2.1）で、Workspaceの”Restore .RData into workspace at startup”のチェックを外し、“Save workspace to .RData on exit:”を”Never”にしておくとよいでしょう。これは、前に実行したデータが残っていると、作業工程の再現可能性が損なわれるおそれがあるからです。\n次に、PackagesのPrimary CRAN repository: で、主に使用するCRANリポジトリを設定しておきましょう。ここで設定したCRANリポジトリがパッケージのインストールで使用されます（パッケージについては セクション 3.7 を参照してください）。\nChange…ボタンを押すとCRAN Mirrors:の選択肢が現れます（図 2.2）。日本からですと、“Japan (Yonezawa) [https] - Yamagata University”か、“Global (CDN) - RStudio”がよいと思われます。\nまたGeneral の Graphics タブで、Graphics DeviceのBackendに”AGG”を設定しておくとグラフの文字化けが少なくなります（図 2.3）。なお、この後、Rでraggパッケージのインストールを求められる場合があります。\nその他たくさんの設定項目がありますが、お好みまたは必要に応じて、だんだんと設定していけばよいでしょう。\n一部の設定項目は、次節で説明するプロジェクトごとに設定することも可能です。こちらは、Tools &gt; Project Options… で設定します。",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "rstudio.html#ペイン",
     "title": "2  RStudioの基本操作",
     "section": "2.4 ペイン",
-    "text": "2.4 ペイン\n新規にファイルを作成したところで、RStudioのウィンドウは4つのペインが表示される形になっていると思います（図 2.7）。\n左上は前節で説明したとおり、Rスクリプトなどのファイルを編集するエディタのペインです。\n左下には3つのタブがあって、ペインを切り替えられるようになっています。Consoleは、Rのコンソールで、実行結果がここに表示されます。Terminalは、OSのシェルを実行できるターミナルです。Background Jobsには、バックグラウンドで実行されるジョブの状況が表示されます。\n右上には、Environment、History、Connections、Tutorialのタブがあります。Environmentには、変数やデータフレームなどのオブジェクトのリストが表示されます。Historyは、実行したコマンドの履歴です。Connectionsは、接続しているデータベースの情報が表示されます。Tutorialは、learnrパッケージによるチュートリアルです（learnrパッケージのインストールが必要です）。また、状況に応じてBuildやGitといったタブが現れます。\n右下は、Files、Plots、Packages、Help、Viewer、Presentationのタブがあります。Filesには、プロジェクトディレクトリ内のファイルが表示されます。Plotsは、作成したグラフが表示されるところです。Packagesには、インストール済みのパッケージの一覧があります。左にあるチェックボックスをクリックすると、パッケージの読み込みができます。Helpは、ヘルプを表示するペインです。Viewerは、ローカルなウェブコンテントが表示されます。インタラクティブな地図表示などで利用されます。Presentationは、RMarkdownなどで作成したプレゼンテーションが表示されるところです。\nこれらのペインの配置は、Global Options（図 2.1）のPane Layoutで変更できます。詳細は、RStudio User GuideのPane Layoutを参照してください。\nまた、RStudioの使用方法については参考文献(1)に詳しい説明があります。\n\n\n\n\n(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛. RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）. 東京, 技術評論社, 2021, ISBN978-4-297-12170-9.",
+    "text": "2.4 ペイン\n新規にファイルを作成したところで、RStudioのウィンドウは4つのペインが表示される形になっていると思います（図 2.7）。\n左上は前節で説明したとおり、Rスクリプトなどのファイルを編集するエディタのペインです。\n左下には3つのタブがあって、ペインを切り替えられるようになっています。Consoleは、Rのコンソールで、実行結果がここに表示されます。Terminalは、OSのシェルを実行できるターミナルです。Background Jobsには、バックグラウンドで実行されるジョブの状況が表示されます。\n右上には、Environment、History、Connections、Tutorialのタブがあります。Environmentには、変数やデータフレームなどのオブジェクトのリストが表示されます。Historyは、実行したコマンドの履歴です。Connectionsは、接続しているデータベースの情報が表示されます。Tutorialは、learnrパッケージによるチュートリアルです（learnrパッケージのインストールが必要です）。また、状況に応じてBuildやGitといったタブが現れます。\n右下は、Files、Plots、Packages、Help、Viewer、Presentationのタブがあります。Filesには、プロジェクトディレクトリ内のファイルが表示されます。Plotsは、作成したグラフが表示されるところです。Packagesには、インストール済みのパッケージの一覧があります。左にあるチェックボックスをクリックすると、パッケージの読み込みができます。Helpは、ヘルプを表示するペインです。Viewerは、ローカルなウェブコンテントが表示されます。インタラクティブな地図表示などで利用されます。Presentationは、RMarkdownなどで作成したプレゼンテーションが表示されるところです。\nこれらのペインの配置は、Global Options（図 2.1）のPane Layoutで変更できます。詳細は、RStudio User GuideのPane Layoutを参照してください。\nまた、RStudioの使用方法については参考文献(1)に詳しい説明があります。\n\n\n\n\n(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛. RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）. 東京, 技術評論社, 2021.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>RStudioの基本操作</span>"
     ]
@@ -150,8 +150,8 @@
     ]
   },
   {
-    "objectID": "r_basic.html#パッケージの利用",
-    "href": "r_basic.html#パッケージの利用",
+    "objectID": "r_basic.html#sec-package",
+    "href": "r_basic.html#sec-package",
     "title": "3  Rの基本操作",
     "section": "3.7 パッケージの利用",
     "text": "3.7 パッケージの利用\n統計解析にRを使用することの利点のひとつは、豊富なパッケージを利用できることです。",
@@ -160,8 +160,8 @@
     ]
   },
   {
-    "objectID": "r_basic.html#sec-package",
-    "href": "r_basic.html#sec-package",
+    "objectID": "r_basic.html#パッケージとは",
+    "href": "r_basic.html#パッケージとは",
     "title": "3  Rの基本操作",
     "section": "3.8 パッケージとは",
     "text": "3.8 パッケージとは\nパッケージとは、R本体にはない解析手法や、グラフィック環境、データなどをひとまとまりにまとめて扱えるようにしたものです。パッケージは、ユーザーが自分で作成して公開することもできます。そのため、非常にたくさんのパッケージを利用することができます。\n\n3.8.1 パッケージを探す\nCRANには2万を超えるパッケージが登録されています。CRAN Task Viewsでは、さまざまな分野について、よく使われるパッケージを紹介しています。\nCRANのほかにもパッケージを登録しているところがあります。Bioconductorでは生物情報学関連のパッケージを集めています。\nこのほか、GitHubなどで作者が独自に公開しているパッケージもあります。検索エンジンで探してみたり、AIに尋ねてみたりするのもよいでしょう。\n\n\n3.8.2 パッケージをインストールする\nCRANからパッケージをインストールするには、install.packages()関数を使用します。以下の例ではggplot2パッケージをインストールしています。“dependencies = TRUE”という引数をつけると、依存パッケージも同時にインストールされます。\n\ninstall.packages(\"ggplot2\", dependencies = TRUE)\n\nRStudioでしたら、メニューの Tools &gt; Install Packages… からインストールすることもできます。\n\n\n3.8.3 パッケージを使う\nlibrary()関数でパッケージを読み込みます。下の例ではggplot2パッケージを読み込んでいます。ggplot2パッケージは、統一された文法でグラフを作成できるパッケージです。\n\nlibrary(ggplot2)\n\nこれによりggplot2パッケージの関数が使えるようになります。以下ではggplot2を用いて散布図を描画しています。\n\nggplot(data.frame(x = 1:10, y = (1:10) * 0.5),\n       aes(x, y)) +\n  geom_point()",
@@ -170,11 +170,141 @@
     ]
   },
   {
+    "objectID": "r_commander.html",
+    "href": "r_commander.html",
+    "title": "4  R Commander",
+    "section": "",
+    "text": "4.1 R Commanderのインストール\nRでは、基本的にはスクリプトを作成して解析をおこないます。ただ、どうしてもエディタで文字をタイピングするというのが苦手という方もいらっしゃるでしょう。そのような方のために、GUI環境もあります。\nGUI環境としては、jamoviやJASPといった、Rをエンジンとして使うアプリケーションもありますが、ここではR Commanderを紹介します。\nR CommanderはRのパッケージとして提供されています。Rのコンソールで以下のコマンドを入力することでインストールされます。\ninstall.packages(\"Rcmdr\")\nなお、macOSでは別にXQuartzのインストールも必要です。Apple Silicon搭載のMacでは、XQuartz 2.8.0でないとエラーが発生します（2025年5月10日現在）。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R Commander</span>"
+    ]
+  },
+  {
+    "objectID": "r_commander.html#r-commanderのインストール",
+    "href": "r_commander.html#r-commanderのインストール",
+    "title": "4  R Commander",
+    "section": "",
+    "text": "4.1.1 EZR\nEZRは、R Commanderのプラグインです。\n自治医科大の\n医学関連の解析方法が充実しています。\nCRANからもインストールできますが、EZRのウェブサイトでインストーラーが公開されていますので、それを利用してインストールすることもできます。CRANからインストールするときは、RcmdrPlugin.EZRをインストールします。\n\ninstall.packages(\"RcmdrPlugin.EZR\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R Commander</span>"
+    ]
+  },
+  {
+    "objectID": "r_commander.html#r-commanderの起動",
+    "href": "r_commander.html#r-commanderの起動",
+    "title": "4  R Commander",
+    "section": "4.2 R Commanderの起動",
+    "text": "4.2 R Commanderの起動\nRのコンソールで、以下のコマンドを入力すると、R Commanderが起動します。初回起動時にはさらにいくつかのパッケージのインストールを求められるかもしれません。\n\nlibrary(Rcmdr)\n\nいったんR Commanderを終了した場合（Rは終了せず、R Commanderだけを終了した場合）は、Commander()関数で起動できます。\n\nCommander()",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R Commander</span>"
+    ]
+  },
+  {
+    "objectID": "r_commander.html#r-commanderの使い方",
+    "href": "r_commander.html#r-commanderの使い方",
+    "title": "4  R Commander",
+    "section": "4.3 R Commanderの使い方",
+    "text": "4.3 R Commanderの使い方\nR Commanderが起動すると 図 4.1 のウィンドウが表示されます。\n\n\n\n\n\n\n図 4.1: R Commanderの起動画面（Windows版）\n\n\n\n「データ」メニューから必要なデータを読み込むことができます。データを読み込んだら、グラフを描いたり、仮説検定や、統計モデルへのあてはめができます。こうした解析の過程は「Rスクリプト」のタブに保存されます。また、「ファイル」メニューの「スクリプトを保存…」で保存することもできます（終了時にも保存するか尋ねられます）。解析過程をスクリプトとして保存しておくと、あとで再利用ができます。データに修正があったときなどに完全に同一の解析を繰り返すことができますので、一時的な利用でなければ、保存しておくのが良いでしょう。\nまた、R Markdown形式での保存も可能です。R Markdownについてはここでは詳しくは触れませんが、もっと知りたい方はR Markdown入門や参考文献(1)などをご覧ください。\n\n4.3.1 EZRの使用\nEZRを使用する場合は、EZRプラグインを読み込みます。メニューのツール&gt;Rcmdrプラグインのロード… でRcmdrPlugin.EZRを選択します（図 4.2）。\n\n\n\n\n\n\n図 4.2: EZRプラグインのロード\n\n\n\nこの後、R Commanderの再起動を求められますので、「はい」を選択して、再起動します。再起動後にはメニューがEZRのものになっており、EZRに搭載された解析機能を使用できるようになります。",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R Commander</span>"
+    ]
+  },
+  {
+    "objectID": "r_commander.html#r-commanderの使い方についてもっと知るには",
+    "href": "r_commander.html#r-commanderの使い方についてもっと知るには",
+    "title": "4  R Commander",
+    "section": "4.4 R Commanderの使い方についてもっと知るには",
+    "text": "4.4 R Commanderの使い方についてもっと知るには\nR Commanderについてはこの本ではこれだけで、あまり詳細には触れません。R Commanderを使用した統計解析については参考文献(2)が詳しいので、R Commanderを使用したい方はこちらをご覧ください。\n\n\n\n\n(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛. RユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）. 東京, 技術評論社, 2021.\n\n\n(2) 逸見功. 統計ソフト「R」超入門〈最新版〉. 東京, 講談社, 2023.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R Commander</span>"
+    ]
+  },
+  {
+    "objectID": "import_to_graph.html",
+    "href": "import_to_graph.html",
+    "title": "5  データの読み込みからグラフ作成まで",
+    "section": "",
+    "text": "5.1 プロジェクトの作成\nこの章では、RStudioを使用して、データを読み込み、グラフを作成するまでをスクリプトにまとめる過程を紹介します。\nFile &gt; New Project… を選択し、新しいプロジェクトを作成します。 開いたダイアログで、New Directoryを選択し、さらにNew Projectを選択します。 ディレクトリ名はここではdata_import_plotとします。別の名前でも構いませんが、分かりやすい名前にしておくのがよいでしょう。ここまでの流れは セクション 2.2.1 のとおりです。",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>データの読み込みからグラフ作成まで</span>"
+    ]
+  },
+  {
+    "objectID": "import_to_graph.html#データのダウンロードと読み込み",
+    "href": "import_to_graph.html#データのダウンロードと読み込み",
+    "title": "5  データの読み込みからグラフ作成まで",
+    "section": "5.2 データのダウンロードと読み込み",
+    "text": "5.2 データのダウンロードと読み込み\n\n5.2.0.1 ダウンロード\nデータとして、国勢調査のデータを使用します。e-statの「国勢調査/時系列データ/男女，年齢，配偶関係/男女別人口及び人口性比 － 全国，都道府県（大正9年～令和2年）」からCSV（列指向データ）をダウンロードします。筆者がダウンロードしたものがGitHubのレポジトリにありますので（https://github.com/ito4303/KanazawaR002/raw/refs/heads/main/data/FEH_00200521_241003100519.csv）、こちらも利用可能です。ダウンロードしたファイルは、プロジェクトのディレクトリの下にdataディレクトリをつくって、そこに保存しておきます。\n実際のデータ解析プロジェクトでは、多数のファイルやRスクリプトが使用されることもあります。そのような場合は、プロジェクトのディレクトリの下に、データ以外にも用途別のサブディレクトリをつくっておくとよいでしょう。例えば、Rスクリプトはscriptsディレクトリに、出力ファイルはoutputsディレクトリに、といった具合です。\n\n\n5.2.0.2 読み込み\nダウンロードしたファイルをreadrパッケージのread_csv関数を使ってRに読み込ませます。\n実際にファイルを読み込む前に、まず、この後のデータの整形や可視化でも使用するのでtidyverseパッケージを読み込んでおきます。\nつづいて、fie.path関数で、使用するシステムに応じたファイルパスを作成して、data_path変数に入れておきます。ファイル名がFEH_00200521_241003100519.csvでなければ、ファイル名に合わせて変更してください。\n\nlibrary(tidyverse)\n\ndata_path &lt;- file.path(\"data\", \"FEH_00200521_241003100519.csv\")\n\nread_csv関数で、上で定義したファイルパス(data_path)からファイルを読み込んで、pref_dataというオブジェクトに格納します。ここで使用している、read_csv関数のその他の引数は、以下のとおりです。\n\ncol_types: 各列の型です。1文字ごとに1列に対応します。文字は以下のように型に対応します。\n\nc: 文字\nd: 倍精度実数\nf: 因子\n\nna: データファイル中で欠測（データなし）を表す文字です。このファイルでは”-“が欠測値を表すので、これを指定しています。\nlocale: 言語や地域に依存する設定です。ここでは文字コードに”CP932 “（Shift_JIS）を指定するようにしています。\n\n\npref_data &lt;- read_csv(file = data_path,\n                      col_types = \"fcfcfccccd\",\n                      na = \"-\",\n                      locale = locale(encoding = \"CP932\"))\n\nちなみに、Excelファイルの場合は、readxlパッケージのread_excel関数が利用可能です。\nread_csv関数で読み込んだデータを確認します。head関数で、先頭の5行を表示します。\n\nhead(pref_data, n = 5)\n\n# A tibble: 5 × 10\n  tab_code 表章項目 cat01_code 男女_時系列 area_code 地域_時系列 time_code \n  &lt;fct&gt;    &lt;chr&gt;    &lt;fct&gt;      &lt;chr&gt;       &lt;fct&gt;     &lt;chr&gt;       &lt;chr&gt;     \n1 020      人口     100        総数        00000     全国        1920000000\n2 020      人口     100        総数        00000     全国        1925000000\n3 020      人口     100        総数        00000     全国        1930000000\n4 020      人口     100        総数        00000     全国        1935000000\n5 020      人口     100        総数        00000     全国        1940000000\n# ℹ 3 more variables: `時間軸（調査年）` &lt;chr&gt;, unit &lt;chr&gt;, value &lt;dbl&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>データの読み込みからグラフ作成まで</span>"
+    ]
+  },
+  {
+    "objectID": "import_to_graph.html#データの整形",
+    "href": "import_to_graph.html#データの整形",
+    "title": "5  データの読み込みからグラフ作成まで",
+    "section": "5.3 データの整形",
+    "text": "5.3 データの整形\n読み込んだデータのうち、後で使うところだけを残します。これには以下のような処理をおこないます。\n\npref_popl &lt;- pref_data |&gt;\n  dplyr::filter(`表章項目` == \"人口\" &\n                 !(`地域_時系列` %in% c(\"人口集中地区\",\n                                        \"人口集中地区以外の地区\"))) |&gt;\n  dplyr::mutate(`男女` = factor(`男女_時系列`,\n                                levels = c(\"総数\", \"男\", \"女\")),\n                `地域` = factor(`地域_時系列`,\n                                levels = unique(pref_data$`地域_時系列`)),\n                `年` = as.numeric(str_sub(time_code, 1, 4)),\n                `人口` = value,\n                .keep = \"none\")\n\n順を追って説明します。まず、人口だけが必要なので、dplyrパッケージのfilter関数を使って、表章項目列が”人口”で、なおかつ（&は論理積の演算子です）、地域_時系列列が”人口集中地区”あるいは”人口集中地区の地区”ではない行を残しています。filter関数は、データフレームのうち、条件に合致する行だけを残すというものです。また、%in%演算子は、左辺の値が、右辺のベクトルの要素であればとTRUE、そうでなければFALSEの値を返すというものです。!は否定の単項論理演算子です。\nなお、dplyrパッケージはtidyverseパッケージに含まれているので、ここであらためて読み込む必要はありません。\nここまで処理したデータをパイプ演算子（|&gt;）で次の処理に渡します。これは、式の計算結果を次の関数の第1引数として与えるという演算子です。\n次は列の処理です。これにはdplyrパッケージのmutate関数を使用します。この関数は、新しい列を追加するという機能をもっています。\nまず、男女_時系列列の値を因子型に変換し、男女という列（変数）を作成します。地域_時系列列の値も因子型に変換し、地域という列を作成します。さらに、time_code列のそれぞれの値から、str_sub関数で最初の4文字を抽出し、as.numeric関数で数値に変換し、新しい列の年を作成しました。人口の値valueも新しい列人口に格納しました。そのうえで、これら以外の列は捨てるようにします。mutate関数の最後の引数で.keep = \"none\"としていますが、こうすると、この関数の中で定義した列だけが残るようになります。\nこのようにして整理させたデータを最終的にpref_poplに代入します。\n\n5.3.1 整形結果\n必要な部分だけを残すと以下のようになりました。head関数で最初の5行を表示して、確認します。\n\nhead(pref_popl,n = 5)\n\n# A tibble: 5 × 4\n  男女  地域     年     人口\n  &lt;fct&gt; &lt;fct&gt; &lt;dbl&gt;    &lt;dbl&gt;\n1 総数  全国   1920 55963053\n2 総数  全国   1925 59736822\n3 総数  全国   1930 64450005\n4 総数  全国   1935 69254148\n5 総数  全国   1940 73114308",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>データの読み込みからグラフ作成まで</span>"
+    ]
+  },
+  {
+    "objectID": "import_to_graph.html#ggplot2による可視化",
+    "href": "import_to_graph.html#ggplot2による可視化",
+    "title": "5  データの読み込みからグラフ作成まで",
+    "section": "5.4 ggplot2による可視化",
+    "text": "5.4 ggplot2による可視化\nここからデータをグラフにしていきます。グラフ作成のためここではggplot2パッケージを使用します。ggplot2パッケージもtidyverseに含まれているので、あらためて読み込む必要はありません。データには、先に読み込んで整形した都道府県の人口データを使用します。\nグラフ作成の前に、使用する日本語フォントを変数にいれておきます。この部分はシステムやお好みで適宜変えてください。このように変数にいれておくと、この部分だけ変更することで、あとのグラフのフォントを一括で変更することができます。\n今回はYuGothicを使用しましたが、お好みのフォントを利用してください。ヒラギノフォントでしたら”Hiragino Sans”、Notoフォントでしたら、“Noto Sans JP”などとすればよいでしょう。\n\njp_font &lt;- \"YuGothic\"\n#jp_font &lt;- \"Hiragino Sans\"\n#jp_font &lt;- \"Noto Sans JP\"\n\n参考までに、利用可能なフォントの一覧は、systemfontsパッケージのsystem_fonts関数で得ることができます。以下は、筆者の環境（macOS 15.5）で、family列に”Hiragino”を含む行の、name、family、style列を抽出した結果です。\n\nsystemfonts::system_fonts() |&gt;\n  dplyr::filter(str_detect(family, \"Hiragino\")) |&gt;\n  dplyr::select(name, family, style)\n\n# A tibble: 17 × 3\n   name               family                    style\n   &lt;chr&gt;              &lt;chr&gt;                     &lt;chr&gt;\n 1 HiraginoSans-W4    Hiragino Sans             W4   \n 2 HiraginoSans-W1    Hiragino Sans             W1   \n 3 HiraginoSans-W8    Hiragino Sans             W8   \n 4 HiraginoSansGB-W6  Hiragino Sans GB          W6   \n 5 HiraginoSans-W5    Hiragino Sans             W5   \n 6 HiraginoSansGB-W3  Hiragino Sans GB          W3   \n 7 HiraginoSans-W2    Hiragino Sans             W2   \n 8 HiraMinProN-W3     Hiragino Mincho ProN      W3   \n 9 HiraginoSans-W9    Hiragino Sans             W9   \n10 HiraginoSansCNS-W3 Hiragino Sans CNS         W3   \n11 HiraMinProN-W6     Hiragino Mincho ProN      W6   \n12 HiraginoSans-W6    Hiragino Sans             W6   \n13 HiraginoSans-W3    Hiragino Sans             W3   \n14 HiraMaruProN-W4    Hiragino Maru Gothic ProN W4   \n15 HiraginoSansCNS-W6 Hiragino Sans CNS         W6   \n16 HiraginoSans-W0    Hiragino Sans             W0   \n17 HiraginoSans-W7    Hiragino Sans             W7   \n\n\n\n5.4.1 折れ線グラフ\nまず、全国の人口総数データを時系列で表示します。時系列データの可視化には折れ線グラフを使用します。\ndplyrパッケージのfilter関数で、地域 == \"全国\", 男女 == \"総数\"と指定して、グラフに必要な行だけに絞り込みます。filter関数で引数をコンマでつなげると、論理積（&）と同じになります。\n\nall_popl &lt;- pref_popl |&gt;\n  dplyr::filter(`地域` == \"全国\", `男女` == \"総数\")\n\nつづいて、グラフを作成します。ggplot関数は、グラフのオブジェクトの初期化をおこなう関数です。data引数に、使用するデータのall_poplを与えます。mapping引数にはaes(x = `年`, y = `人口`)という関数の値を与えています(aes = aesthetic mappings)。これにより、X軸に年、Y軸に人口をマッピングすると指定しています。\nggplot2では、“+”演算子で、レイヤー（層）を追加していってグラフを完成させるようになっています。次の行のgeom_line関数で折れ線グラフを描画します。\n\nggplot(data = all_popl, mapping = aes(x = `年`, y = `人口`)) +\n  geom_line()\n\n\n\n\n\n\n\n\nこれでもグラフは作成されますが、さらに見やすくなるようにしていきます。具体的には以下のようにしました。\n\ngeom_pointで、点も加えます。\nscale_x_continuousとscale_y_continuousで軸の表示を調整します。\ntheme_grayで、テーマの設定とフォントの設定をおこないます。\n\n\nggplot(all_popl, aes(x = `年`, y = `人口`)) +\n  geom_line() + geom_point() +\n  scale_x_continuous(breaks = seq(1920, 2020, by = 10)) +\n  scale_y_continuous(name = \"人口（人）\",\n                     breaks = seq(6e+7, 12e+7, by = 2e+7),\n                     labels = c(\"6000万\", \"8000万\", \"1億\", \"1億2000万\")) +\n  theme_gray(base_family = jp_font)\n\n\n\n\n\n\n\n\n次に全国のデータを、総数・男・女の別に表示します。\nまず、dplyr::filter関数で全国のデータだけ残します。この関数の返り値をパイプ演算子で次の行のggplot関数に渡しています。\nggplot関数のmapping引数では、aes関数でcolour = `男女`と引数を与えることで、男女列の要素別に色分けして線を引きます。また、scale_colour_manualで各要素の色を指定しています（カラーユニバーサルデザイン対応の色にしています）。\n\npref_popl |&gt;\n  dplyr::filter(`地域` == \"全国\") |&gt;\n  ggplot(aes(x = `年`, y = `人口`, colour = `男女`)) +\n  geom_line() + geom_point(size = 2.5) +\n  scale_colour_manual(values = c(\"#000000\", \"#005aff\", \"#ff4b00\")) +\n  scale_x_continuous(breaks = seq(1920, 2020, 10)) +\n  scale_y_continuous(name = \"人口（人）\",\n                     breaks = seq(4e+7, 12e+7, 2e+7),\n                     labels = c(\"4000万\", \"6000万\", \"8000万\", \"1億\", \"1億2000万\")) +\n  theme_gray(base_family = jp_font)\n\n\n\n\n\n\n\n\nつづいて、富山県・石川県・福井県のデータを、総数・男・女の別に表示します。dplyr::filter関数で、この3県のデータだけを抽出しています。aes関数の引数で”shape = `地域`, linetype = `地域`“とすることで、県別に点の形と線の種類を変えることができます。\nscale_y_continuous関数では、Y軸の目盛りを、2×105から12×105の間で、2×105刻みとすること、表示されるラベルは104（=1万）単位とすることを指定しています。\n\npref_popl |&gt;\n  dplyr::filter(`地域` %in% c(\"富山県\", \"石川県\", \"福井県\")) |&gt;\n  ggplot(aes(x = `年`, y = `人口`, colour = `男女`, \n             shape = `地域`, linetype = `地域`)) +\n  geom_line() + geom_point(size = 2.5) +\n  scale_colour_manual(values = c(\"#000000\", \"#005aff\", \"#ff4b00\")) +\n  scale_x_continuous(breaks = seq(1920, 2020, 10)) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(2e+5, 12e+5),\n                     breaks = seq(2e+5, 12e+5, by = 2e+5),\n                     labels = \\(x) x / 1e+4) +\n  theme_gray(base_family = jp_font)\n\n\n\n\n\n\n\n\n\n\n5.4.2 積み上げ折れ線グラフとグラフの分割\n一応目的のグラフは描けましたが、これでは煩雑なので、グラフを分けて積み上げ折れ線グラフにします。\nまず、dplyr::filter関数で、男女列が”男”または”女”であり、かつ地域列この3県のデータだけを抽出しています。\n続いて、グラフを作成します。geom_area関数で積み上げグラフを描画します。また、annotate関数でグラフに直接説明を書き込みました。\n最後に、facet_wrap関数を使って各県のグラフを分割して描くようにしています。引数で~`地域` とすることで、各県のグラフを分割するように指定しています。また、nrow = 2 で、グラフを2行にして描画することを指定しています。\n\npref_popl |&gt;\n  dplyr::filter(`男女` %in% c(\"男\", \"女\"),\n                `地域` %in% c(\"富山県\", \"石川県\", \"福井県\")) |&gt;\n  ggplot(aes(x = `年`, y = `人口`, fill = `男女`)) +\n  geom_area() +\n  annotate(\"text\", x = 2000, y = 3e+5, label = \"女\", colour = \"white\") +\n  annotate(\"text\", x = 2000, y = 7.2e+5, label = \"男\", colour = \"white\") +\n  scale_x_continuous(breaks = seq(1920, 2020, 20)) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(0, 12e+5),\n                     breaks = seq(0, 12e+5, by = 2e+5),\n                     labels = \\(x) x / 1e+4) +\n  scale_fill_manual(values = c(\"#005aff\", \"#ff4b00\")) +\n  theme_gray(base_family = jp_font) +\n  facet_wrap(~`地域`, nrow = 2)\n\n\n\n\n\n\n\n\n\n\n5.4.3 散布図\n次に、都道府県ごとに、2020年の男女の人口を比較するグラフを作成します。これには散布図を使用します。\nそのため、まずデータを変形します。pref_poplの男女列には、“総数”、“男”、“女”の3つの値が含まれていますが、これを別々の列に分けるようにします。これにはtiydrパッケージのpivot_wider関数を使用します。names_from引数には、新しい列となる値を含む列を指定します。ここでは男女列です。また、values_from引数には、新しい列の値となる値を含む列を指定します。ここでは人口列です。\n\npref_popl_wide &lt;- pref_popl |&gt;\n  tidyr::pivot_wider(names_from = \"男女\", values_from = \"人口\") |&gt;\n  dplyr::filter(`地域` != \"全国\", `年` == 2020)\n\nこのようになります。\n\nhead(pref_popl_wide)\n\n# A tibble: 6 × 5\n  地域      年    総数      男      女\n  &lt;fct&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1 北海道  2020 5224614 2465088 2759526\n2 青森県  2020 1237984  583402  654582\n3 岩手県  2020 1210534  582952  627582\n4 宮城県  2020 2301996 1122598 1179398\n5 秋田県  2020  959502  452439  507063\n6 山形県  2020 1068027  516438  551589\n\n\nグラフにします。geom_pointで散布図を作成します。aes関数で、X軸に男、Y軸に女をマッピングするように指定しています。テーマはtheme_bwにしました。\n\nggplot(pref_popl_wide, aes(x = `男`, y = `女`)) +\n  geom_point() +\n  theme_bw(base_family = jp_font)\n\n\n\n\n\n\n\n\n見ばえを整えます。以下のレイヤーを加えました。\n\n“geom_abline(linetype = 2, slope = 1, intercept = 0)”で、X=Yの点線を引きます。\nscale_x_continuousとscale_y_continuous関数で、それぞれX軸とY軸の名前と軸の描き方を指定します。軸は、0〜800万人の範囲で、200万人ごとに目盛りをつけ、ラベルの単位を1万人とするようにしています。\n“coord_fixed(ratio = 1)”で、X軸とY軸の比を1:1に設定します。\n\n\nggplot(pref_popl_wide, aes(x = `男`, y = `女`)) +\n  geom_abline(linetype = 2, slope = 1, intercept = 0) +\n  geom_point(size = 3, alpha = 0.6) +\n  scale_x_continuous(name = \"男性人口（万人）\",\n                     limits = c(0, 8e+6),\n                     breaks = seq(0, 8e+6, by = 2e+6),\n                     labels = \\(x) x / 1e+4) +\n  scale_y_continuous(name = \"女性人口（万人）\",\n                     limits = c(0, 8e+6),\n                     breaks = seq(0, 8e+6, by = 2e+6),\n                     labels = \\(x) x / 1e+4) +\n  coord_fixed(ratio = 1) +\n  theme_bw(base_family = jp_font)\n\n\n\n\n\n\n\n\n\n\n5.4.4 棒グラフ\n続いて、各都道府県の2020年の人口総数をグラフにします。これには棒グラフを使用します。\nまず、pref_poplからfilter関数で必要な行を取り出します。`地域` != \"全国\" とすることで、地域列の値が”全国”以外（!= は「不等」を意味する比較演算子です）、すなわち各都道府県の行を残すようにします。さらに、`男女` == \"総数\" と `年` == 2020 とコンマで区切って続けて、人口総数の2020年の行だけを残しています。\ngeom_colは棒グラフを描画する関数です。テーマはtheme_classicを使用しました。\n\npref_popl |&gt;\n  dplyr::filter(`地域` != \"全国\", `男女` == \"総数\", `年` == 2020) |&gt;\n  ggplot(aes(x = `地域`, y = `人口`)) +\n  geom_col() +\n  theme_classic(base_family = jp_font)\n\n\n\n\n\n\n\n\nひとまずグラフができましたが、みばえがいまひとつなので、改良していきます。\nまず、横軸のラベルが重なっていて読めないので、scale_x_discrete関数で”guide = guide_axis(angle = 90)“と指定して、ラベルを90°回転させます。また、scale_y_continuous関数で、横軸の表示を整えます。\n\npref_popl |&gt;\n  dplyr::filter(`地域` != \"全国\", `男女` == \"総数\", `年` == 2020) |&gt;\n  ggplot(aes(x = `地域`, y = `人口`)) +\n  geom_col() +\n  scale_x_discrete(name = \"都道府県\", guide = guide_axis(angle = 90)) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(0, 1.5e+7),\n                     breaks = seq(0, 1.5e+7, 5e+6),\n                     labels = \\(x) x / 1e+4) +\n  theme_classic(base_family = jp_font)\n\n\n\n\n\n\n\n\nこのグラフは横にしたほうが見やすいかもしれません。そうするには、coord_flip()を使います。そうすると、縦軸が下から並ぶようになるので、scale_x_discrete関数で、limits = revとして、上から並ぶようにさせます。\n\npref_popl |&gt;\n  dplyr::filter(`地域` != \"全国\", `男女` == \"総数\", `年` == 2020) |&gt;\n  ggplot(aes(x = `地域`, y = `人口`)) +\n  geom_col() +\n  scale_x_discrete(name = \"都道府県\", limits = rev) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(0, 1.5e+7),\n                     breaks = seq(0, 1.5e+7, 5e+6),\n                     labels = \\(x) x / 1e+4) +\n  coord_flip() +\n  theme_classic(base_family = jp_font)\n\n\n\n\n\n\n\n\n都道府県名のラベルと、横軸の0との間の隙間が気になるので、ここを詰めるようにします。これには、scale_y_continuous関数で、expand = expansion(mult = c(0, 0.05))と指定します。\n\npref_popl |&gt;\n  dplyr::filter(`地域` != \"全国\", `男女` == \"総数\", `年` == 2020) |&gt;\n  ggplot(aes(x = `地域`, y = `人口`)) +\n  geom_col() +\n  scale_x_discrete(name = \"都道府県\", limits = rev) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(0, 1.5e+7),\n                     breaks = seq(0, 1.5e+7, 5e+6),\n                     labels = \\(x) x / 1e+4,\n                     expand = expansion(mult = c(0, 0.05))) +\n  coord_flip() +\n  theme_classic(base_family = jp_font)\n\n\n\n\n\n\n\n\n男女別の積み上げ棒グラフにします。filter関数で必要な行を取り出しますが、今回は `男女` != \"総数\" として、男女列の値が総数でない、すなわち”男”か”女”の行を抽出しています。地域と年は前と同様です。\n積み上げ棒グラフを作成するには、geom_col関数の引数でposition = \"stack\"とします（これはデフォルトの動作です）。また、scale_fill_manual(values = c(\"#005aff\", \"#ff4b00\"))で色も指定します。\n\npref_popl |&gt;\n  dplyr::filter(`地域` != \"全国\", `男女` != \"総数\", `年` == 2020) |&gt;\n  ggplot(aes(x = `地域`, y = `人口`, fill = `男女`)) +\n  geom_col(position = \"stack\") +\n  scale_fill_manual(values = c(\"#005aff\", \"#ff4b00\")) +\n  scale_x_discrete(name = \"都道府県\", limits = rev) +\n  scale_y_continuous(name = \"人口（万人）\",\n                     limits = c(0, 1.5e+7),\n                     breaks = seq(0, 1.5e+7, 5e+6),\n                     labels = \\(x) x / 1e+4,\n                     expand = expansion(mult = c(0, 0.05))) +\n  coord_flip() +\n  theme_classic(base_family = jp_font)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>データの読み込みからグラフ作成まで</span>"
+    ]
+  },
+  {
+    "objectID": "import_to_graph.html#まとめ",
+    "href": "import_to_graph.html#まとめ",
+    "title": "5  データの読み込みからグラフ作成まで",
+    "section": "5.5 まとめ",
+    "text": "5.5 まとめ\nこの章では、データの読み込みから可視化までの過程を説明しました。\nデータの読み込みについてさらに詳しく知るには、どちらも英語ですが、R for Data Science の Data import や、R公式マニュアルの R Data Import/Export が役に立つでしょう。\nggplot2については、こちらもともに英語ですが、公式の解説書のウェブ版 ggplot2: Elegant Graphics for Data Analysis (3e) や Cheatsheet が参考になると思います。",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>データの読み込みからグラフ作成まで</span>"
+    ]
+  },
+  {
+    "objectID": "geo_space.html",
+    "href": "geo_space.html",
+    "title": "6  地理空間データの利用",
+    "section": "",
+    "text": "6.1 地理空間データの読み込み\nこの章では、地理空間データをRで利用する方法を紹介します。\n地理空間データもRで読み込んで使用することができます。この項では、国土数値情報行政区域データから石川県のデータをダウンロードして使用します。",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地理空間データの利用</span>"
+    ]
+  },
+  {
+    "objectID": "geo_space.html#地理空間データの読み込み",
+    "href": "geo_space.html#地理空間データの読み込み",
+    "title": "6  地理空間データの利用",
+    "section": "",
+    "text": "6.1.1 シェープファイル\nシェープファイルは複数のファイルから校正されています。sfパッケージのst_read関数でN03-20240101_17.shpを指定して読み込みます。\n\nlibrary(tidyverse)\nlibrary(sf)\n\nshapefile &lt;- file.path(\"data\", \"N03-20240101_17.shp\")\ndata_s &lt;- st_read(shapefile)\n\n読み込んだデータを表示します。\nN03_002は北海道の振興局名、N03_003は郡名、N03_005は政令指定都市の行政区名なので、金沢市の行ではすべて欠損値(NA)になっています。\n\nprint(data_s)\n\nSimple feature collection with 1710 features and 6 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 136.242 ymin: 36.06723 xmax: 137.3653 ymax: 37.85791\nGeodetic CRS:  JGD2011\nFirst 10 features:\n   N03_001 N03_002 N03_003 N03_004 N03_005 N03_007\n1   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n2   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n3   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n4   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n5   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n6   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n7   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n8   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n9   石川県    &lt;NA&gt;    &lt;NA&gt;  七尾市    &lt;NA&gt;   17202\n10  石川県    &lt;NA&gt;    &lt;NA&gt;  七尾市    &lt;NA&gt;   17202\n                         geometry\n1  POLYGON ((136.6133 36.49857...\n2  POLYGON ((136.5991 36.62053...\n3  POLYGON ((136.5967 36.61824...\n4  POLYGON ((136.5974 36.6189,...\n5  POLYGON ((136.5958 36.61709...\n6  POLYGON ((136.5943 36.61553...\n7  POLYGON ((136.5952 36.61667...\n8  POLYGON ((136.5992 36.62078...\n9  POLYGON ((136.8624 37.08288...\n10 POLYGON ((136.9981 37.11807...\n\n\n\n\n6.1.2 GeoJSON\nシェープファイルは複数のファイルに分かれていて、あつかいがやや煩雑なので、最近はGeoJSONファイルが使われることも多くなってきています。GeoJSONファイルもst_read関数で読むことができます。\n\njsonfile &lt;- file.path(\"data\", \"N03-20240101_17.geojson\")\ndata_g &lt;- st_read(jsonfile)\n\nこちらも表示します。\n\nprint(data_g)\n\nSimple feature collection with 1710 features and 6 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: 136.242 ymin: 36.06723 xmax: 137.3653 ymax: 37.85791\nGeodetic CRS:  WGS 84\nFirst 10 features:\n   N03_001 N03_002 N03_003 N03_004 N03_005 N03_007\n1   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n2   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n3   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n4   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n5   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n6   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n7   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n8   石川県    &lt;NA&gt;    &lt;NA&gt;  金沢市    &lt;NA&gt;   17201\n9   石川県    &lt;NA&gt;    &lt;NA&gt;  七尾市    &lt;NA&gt;   17202\n10  石川県    &lt;NA&gt;    &lt;NA&gt;  七尾市    &lt;NA&gt;   17202\n                         geometry\n1  POLYGON ((136.6133 36.49857...\n2  POLYGON ((136.5991 36.62053...\n3  POLYGON ((136.5967 36.61824...\n4  POLYGON ((136.5974 36.6189,...\n5  POLYGON ((136.5958 36.61709...\n6  POLYGON ((136.5943 36.61553...\n7  POLYGON ((136.5952 36.61667...\n8  POLYGON ((136.5992 36.62078...\n9  POLYGON ((136.8624 37.08288...\n10 POLYGON ((136.9981 37.11807...\n\n\nシェープファイルから読み込んだものと、GeoJSONから読み込んだものでは、なぜか座標参照系(CRS)が異なっている（前者がJGD2011、後者がWGS84）のですが、実用的には問題はないでしょう。\n\nst_crs(data_s)\n\nCoordinate Reference System:\n  User input: JGD2011 \n  wkt:\nGEOGCRS[\"JGD2011\",\n    DATUM[\"Japanese Geodetic Datum 2011\",\n        ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    USAGE[\n        SCOPE[\"Horizontal component of 3D system.\"],\n        AREA[\"Japan - onshore and offshore.\"],\n        BBOX[17.09,122.38,46.05,157.65]],\n    ID[\"EPSG\",6668]]\n\n\n\nst_crs(data_g)\n\nCoordinate Reference System:\n  User input: WGS 84 \n  wkt:\nGEOGCRS[\"WGS 84\",\n    DATUM[\"World Geodetic System 1984\",\n        ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n            LENGTHUNIT[\"metre\",1]]],\n    PRIMEM[\"Greenwich\",0,\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    CS[ellipsoidal,2],\n        AXIS[\"geodetic latitude (Lat)\",north,\n            ORDER[1],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        AXIS[\"geodetic longitude (Lon)\",east,\n            ORDER[2],\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n    ID[\"EPSG\",4326]]\n\n\nできたデータのdata_gのクラスを確認しています。sfクラス（と、data.frameクラス）に属していることがわかります。\n\nclass(data_g)\n\n[1] \"sf\"         \"data.frame\"",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地理空間データの利用</span>"
+    ]
+  },
+  {
+    "objectID": "geo_space.html#地理空間データの可視化",
+    "href": "geo_space.html#地理空間データの可視化",
+    "title": "6  地理空間データの利用",
+    "section": "6.2 地理空間データの可視化",
+    "text": "6.2 地理空間データの可視化\n上で読み込んだデータをggplot2のgeom_sf関数で表示してみます。\n\nggplot(data_g) +\n  geom_sf()\n\n\n\n\n\n\n\n\nこの地図に、市区町村名を重ねて表示します。\nそのためまず、データに含まれるポリゴンを市町村ごとにst_combine関数でまとめます。また、わかりやすいように、市区町村名のフィールドのN03_004を、nameという名前に変えておきました。\n\ndata &lt;- data_g |&gt;\n  dplyr::group_by(N03_004) |&gt;\n  dplyr::summarise(geometry = st_combine(geometry)) |&gt;\n  dplyr::ungroup() |&gt;\n  dplyr::rename(name = N03_004)\n\n各市区町村名を地図に重ねて表示します。\n\njp_font &lt;- \"YuGothic\"\n\nggplot(data) +\n  geom_sf() +\n  geom_sf_text(aes(label = name), size = 2.5, family = jp_font) +\n  scale_x_continuous(breaks = seq(136.5, 137.5, 0.5)) +\n  labs(x = \"経度\", y = \"緯度\") +\n  theme_bw(base_family = jp_font)\n\n\n\n\n\n\n\n\n\n6.2.1 コロプレス図（塗り分け地図）\n2020年の総人口データを使って、各市区町村を塗り分けてみます。\nまず、各市区町村の総人口を読み込みます。このデータはe-stat 都道府県・市区町村のすがた（社会・人口統計体系）からダウンロードしたものです。\n読み込んだ後、市区町村名の先頭についている都道府県名を削除し（実際には空白より後だけ残す処理）、2020年度のデータだけを抽出します。\n\npop_data_file &lt;- file.path(\"data\", \"FEI_CITY_241027082628.csv\")\npop_data &lt;- read_csv(pop_data_file, skip = 1,\n                     col_types = \"cc_n\",\n                     col_names = c(\"year\", \"name\", \"population\")) |&gt;\n  dplyr::mutate(name = str_sub(name, str_locate(name, \" \")[1] + 1)) |&gt;\n  dplyr::filter(year == \"2020年度\")\n\n人口データを地理空間データに結合します。left_joinは、by引数の変数をキーとして、左側のデータ(この例ではdata)を保存しつつ、右側のデータ(この例ではpop_data)から共通のキーをもつ行を結合するという関数です。\n（この例では両方のデータが1対1対応するので、left_joinでもright_joinでも結果は変わりません。）\n\ndata_join &lt;- dplyr::left_join(data, pop_data, by = \"name\")\n\n2020年の総人口データを色で表現して、地図化しました。総人口は対数スケールにしています。\n\nggplot(data_join) +\n  geom_sf(aes(fill = population)) +\n  geom_sf_text(aes(label = name), size = 2.5, family = jp_font) +\n  scale_x_continuous(breaks = seq(136.5, 137.5, 0.5)) +\n  scale_fill_gradient(name = \"人口\",\n                      low = \"#4dc4ff\",\n                      high = \"#ff4b00\",\n                      transform = \"log\",\n                      limits = c(5e+3, 5e+5),\n                      breaks = c(5e+3, 1e+4, 5e+4, 1e+5, 5e+5),\n                      labels = c(\"5000\", \"1万\", \"5万\",\n                                 \"10万\", \"50万\")) +\n  labs(x = NULL, y = NULL) +\n  theme_bw(base_family = jp_font)",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>地理空間データの利用</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "参考文献",
     "section": "",
-    "text": "(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛.\nRユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）.\n東京, 技術評論社, 2021, ISBN978-4-297-12170-9.",
+    "text": "(1) 松村優哉, 湯谷啓明, 紀ノ定保礼, 前田和寛.\nRユーザーのためのRStudio［実践］入門—tidyverseによるモダンな分析フローの世界（改訂第2版）.\n東京, 技術評論社, 2021.\n\n\n(2) 逸見功. 統計ソフト「R」超入門〈最新版〉. 東京,\n講談社, 2023.",
     "crumbs": [
       "参考文献"
     ]
