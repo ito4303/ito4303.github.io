@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -73,7 +93,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9b98f18118eee809be1c051eb5cc78e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -200,14 +220,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#地理空間データの読み込み" id="toc-地理空間データの読み込み" class="nav-link active" data-scroll-target="#地理空間データの読み込み"><span class="header-section-number">6.1</span> 地理空間データの読み込み</a>
+  <li><a href="#座標参照系-crs-coordinate-reference-system" id="toc-座標参照系-crs-coordinate-reference-system" class="nav-link active" data-scroll-target="#座標参照系-crs-coordinate-reference-system"><span class="header-section-number">6.1</span> 座標参照系 (CRS: Coordinate Reference System)</a></li>
+  <li><a href="#rで地理空間データを扱うパッケージ" id="toc-rで地理空間データを扱うパッケージ" class="nav-link" data-scroll-target="#rで地理空間データを扱うパッケージ"><span class="header-section-number">6.2</span> Rで地理空間データを扱うパッケージ</a></li>
+  <li><a href="#地理空間データの読み込み" id="toc-地理空間データの読み込み" class="nav-link" data-scroll-target="#地理空間データの読み込み"><span class="header-section-number">6.3</span> 地理空間データの読み込み</a>
   <ul class="collapse">
-  <li><a href="#シェープファイル" id="toc-シェープファイル" class="nav-link" data-scroll-target="#シェープファイル"><span class="header-section-number">6.1.1</span> シェープファイル</a></li>
-  <li><a href="#geojson" id="toc-geojson" class="nav-link" data-scroll-target="#geojson"><span class="header-section-number">6.1.2</span> GeoJSON</a></li>
+  <li><a href="#データのダウンロード" id="toc-データのダウンロード" class="nav-link" data-scroll-target="#データのダウンロード"><span class="header-section-number">6.3.1</span> データのダウンロード</a></li>
+  <li><a href="#シェープファイル" id="toc-シェープファイル" class="nav-link" data-scroll-target="#シェープファイル"><span class="header-section-number">6.3.2</span> シェープファイル</a></li>
+  <li><a href="#geojson" id="toc-geojson" class="nav-link" data-scroll-target="#geojson"><span class="header-section-number">6.3.3</span> GeoJSON</a></li>
   </ul></li>
-  <li><a href="#地理空間データの可視化" id="toc-地理空間データの可視化" class="nav-link" data-scroll-target="#地理空間データの可視化"><span class="header-section-number">6.2</span> 地理空間データの可視化</a>
+  <li><a href="#地理空間データの可視化" id="toc-地理空間データの可視化" class="nav-link" data-scroll-target="#地理空間データの可視化"><span class="header-section-number">6.4</span> 地理空間データの可視化</a>
   <ul class="collapse">
-  <li><a href="#コロプレス図塗り分け地図" id="toc-コロプレス図塗り分け地図" class="nav-link" data-scroll-target="#コロプレス図塗り分け地図"><span class="header-section-number">6.2.1</span> コロプレス図（塗り分け地図）</a></li>
+  <li><a href="#コロプレス図塗り分け地図" id="toc-コロプレス図塗り分け地図" class="nav-link" data-scroll-target="#コロプレス図塗り分け地図"><span class="header-section-number">6.4.1</span> コロプレス図（塗り分け地図）</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,11 +258,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>この章では、地理空間データをRで利用する方法を紹介します。</p>
-<section id="地理空間データの読み込み" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="地理空間データの読み込み"><span class="header-section-number">6.1</span> 地理空間データの読み込み</h2>
-<p>地理空間データもRで読み込んで使用することができます。この項では、<a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2024.html">国土数値情報行政区域データ</a>から石川県のデータをダウンロードして使用します。</p>
-<section id="シェープファイル" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="シェープファイル"><span class="header-section-number">6.1.1</span> シェープファイル</h3>
+<p>が、そのまえにまず座標参照系について説明しなくてはなりません。</p>
+<section id="座標参照系-crs-coordinate-reference-system" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="座標参照系-crs-coordinate-reference-system"><span class="header-section-number">6.1</span> 座標参照系 (CRS: Coordinate Reference System)</h2>
+<p>地理空間データでは位置を座標で指定します。座標参照系は、この方法を定義したものです。GIS（地理情報システム）で座標を指定する方法には大きく分けて2種類あります。1つは<strong>地理座標系</strong>で、緯度・経度で位置を指定します。もう1つは<strong>投影座標系</strong>で、ある座標を原点として、XY座標（m単位）で位置を指定します。</p>
+<p>地理座標系は、GPSのデータなど、緯度・経度で処理するデータに使用します。GPSで使われているWGS84や、国土数値情報（世界測地系）で使われているJGD2011は、地理座標系です。</p>
+<p>投影座標系には、UTM（ユニバーサル横メルカトル）座標系や、平面直角座標系などがあります。XY座標がm単位になっていますので、距離や面積の計算に使用することができます。投影座標系は、場所によって細かく分かれています。石川県はUTM座標系では53系、平面直角座標系ではVII系という系に含まれます。</p>
+<p>座標参照系は、ほかにもさまざまなものがあります。それぞれの座標参照系にはEPSGコードというコードが割り振られています。たとえば、WGS84のEPSGコードは4326、JGD2011は6668、UTM 53は6690、平面直角座標系VII系は6675などとなっています。</p>
+<p>異なる座標系のデータを重ね合わせるには座標系の変換が必要になります。この処理はRでもできます。</p>
+</section>
+<section id="rで地理空間データを扱うパッケージ" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="rで地理空間データを扱うパッケージ"><span class="header-section-number">6.2</span> Rで地理空間データを扱うパッケージ</h2>
+<p>Rで地理空間データを扱うためのパッケージとしては、以前は<a href="https://cran.r-project.org/package=sp">sp</a>パッケージが標準的でしたが、最近は、simple featuresというGISの規格（ISO 19125-1:2004）を扱えるようにした<a href="https://cran.r-project.org/package=sf">sf</a>パッケージがよく使われるようになってきています（参考文献<span class="citation" data-cites="Brundson2015">(<a href="references.html#ref-Brundson2015" role="doc-biblioref">1</a>)</span>）。この章でもsfパッケージを使用して解説をすすめていきます。</p>
+</section>
+<section id="地理空間データの読み込み" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="地理空間データの読み込み"><span class="header-section-number">6.3</span> 地理空間データの読み込み</h2>
+<section id="データのダウンロード" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="データのダウンロード"><span class="header-section-number">6.3.1</span> データのダウンロード</h3>
+<p>近年、さまざまな地理空間データでオープンデータとして公開されるようになってきています。この項では、まず、<a href="https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2024.html">国土数値情報の行政区域データ</a>から石川県の行政区域データをダウンロードして使用します。各年のデータが用意されていますが、最新のものをダウンロードします。</p>
+<p>ダウンロードしたzipファイルを展開するとフォルダには以下のファイルが含まれています。</p>
+<ul>
+<li><code>KS-META-N03-20240101_17.xml</code></li>
+<li><code>N03-20240101_17.cpg</code></li>
+<li><code>N03-20240101_17.dbf</code></li>
+<li><code>N03-20240101_17.geojson</code></li>
+<li><code>N03-20240101_17.prj</code></li>
+<li><code>N03-20240101_17.shp</code></li>
+<li><code>N03-20240101_17.shx</code></li>
+<li><code>N03-20240101_17.xml</code></li>
+</ul>
+<p>このうち、<code>KS-META-N03-20240101_17.xml</code>はメタデータです。<code>N03-20240101_17</code>から始まるファイルがデータ本体で、これには2種類の形式のデータが含まれています。<code>N03-20240101_17.geojson</code><strong>以外</strong>のファイルがシェープファイル形式のデータ、<code>N03-20240101_17.geojson</code>がGeoJSON形式のデータです。</p>
+</section>
+<section id="シェープファイル" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="シェープファイル"><span class="header-section-number">6.3.2</span> シェープファイル</h3>
 <p>シェープファイルは複数のファイルから校正されています。sfパッケージの<code>st_read</code>関数で<code>N03-20240101_17.shp</code>を指定して読み込みます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -284,9 +335,9 @@ First 10 features:
 </div>
 </div>
 </section>
-<section id="geojson" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="geojson"><span class="header-section-number">6.1.2</span> GeoJSON</h3>
-<p>シェープファイルは複数のファイルに分かれていて、あつかいがやや煩雑なので、最近はGeoJSONファイルが使われることも多くなってきています。GeoJSONファイルも<code>st_read</code>関数で読むことができます。</p>
+<section id="geojson" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="geojson"><span class="header-section-number">6.3.3</span> GeoJSON</h3>
+<p>シェープファイルは複数のファイルに分かれていて扱いがやや煩雑です。このため、最近ではGeoJSON形式のデータファイルが使われることも多くなってきています。GeoJSONファイルも<code>st_read</code>関数で読むことができます。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jsonfile <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"N03-20240101_17.geojson"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data_g <span class="ot">&lt;-</span> <span class="fu">st_read</span>(jsonfile)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -325,7 +376,7 @@ First 10 features:
 10 POLYGON ((136.9981 37.11807...</code></pre>
 </div>
 </div>
-<p>シェープファイルから読み込んだものと、GeoJSONから読み込んだものでは、なぜか座標参照系(CRS)が異なっている（前者がJGD2011、後者がWGS84）のですが、実用的には問題はないでしょう。</p>
+<p>シェープファイルから読み込んだものと、GeoJSONから読み込んだものでは、なぜか座標参照系(CRS)が異なっています（前者がJGD2011、後者がWGS84）。</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(data_s)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -374,21 +425,53 @@ GEOGCRS["WGS 84",
     ID["EPSG",4326]]</code></pre>
 </div>
 </div>
-<p>できたデータの<code>data_g</code>のクラスを確認しています。sfクラス（と、data.frameクラス）に属していることがわかります。</p>
+<p>座標参照系はst_transform関数で変換できます。data_gの座標参照系をJGD2011に変換してみましょう。JGD2011のEPSGコードは6668ですので、crs引数にこの値を与えます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data_g)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_g <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(data_g, <span class="at">crs =</span> <span class="dv">6668</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>CRSを確認します。JGD2011になりました。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(data_g)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: EPSG:6668 
+  wkt:
+GEOGCRS["JGD2011",
+    DATUM["Japanese Geodetic Datum 2011",
+        ELLIPSOID["GRS 1980",6378137,298.257222101,
+            LENGTHUNIT["metre",1]]],
+    PRIMEM["Greenwich",0,
+        ANGLEUNIT["degree",0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS["geodetic latitude (Lat)",north,
+            ORDER[1],
+            ANGLEUNIT["degree",0.0174532925199433]],
+        AXIS["geodetic longitude (Lon)",east,
+            ORDER[2],
+            ANGLEUNIT["degree",0.0174532925199433]],
+    USAGE[
+        SCOPE["Horizontal component of 3D system."],
+        AREA["Japan - onshore and offshore."],
+        BBOX[17.09,122.38,46.05,157.65]],
+    ID["EPSG",6668]]</code></pre>
+</div>
+</div>
+<p>できたデータの<code>data_g</code>のクラスを確認しています。sfクラス（およびdata.frameクラス）に属していることがわかります。</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data_g)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "sf"         "data.frame"</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="地理空間データの可視化" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="地理空間データの可視化"><span class="header-section-number">6.2</span> 地理空間データの可視化</h2>
+<section id="地理空間データの可視化" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="地理空間データの可視化"><span class="header-section-number">6.4</span> 地理空間データの可視化</h2>
 <p>上で読み込んだデータをggplot2の<code>geom_sf</code>関数で表示してみます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_g) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_g) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -400,22 +483,22 @@ GEOGCRS["WGS 84",
 <p>この地図に、市区町村名を重ねて表示します。</p>
 <p>そのためまず、データに含まれるポリゴンを市町村ごとにst_combine関数でまとめます。また、わかりやすいように、市区町村名のフィールドのN03_004を、nameという名前に変えておきました。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data_g <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(N03_004) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">geometry =</span> <span class="fu">st_combine</span>(geometry)) <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">name =</span> N03_004)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data_g <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(N03_004) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">geometry =</span> <span class="fu">st_combine</span>(geometry)) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">name =</span> N03_004)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>各市区町村名を地図に重ねて表示します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>jp_font <span class="ot">&lt;-</span> <span class="st">"YuGothic"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">family =</span> jp_font) <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">136.5</span>, <span class="fl">137.5</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"経度"</span>, <span class="at">y =</span> <span class="st">"緯度"</span>) <span class="sc">+</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>jp_font <span class="ot">&lt;-</span> <span class="st">"YuGothic"</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">family =</span> jp_font) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">136.5</span>, <span class="fl">137.5</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"経度"</span>, <span class="at">y =</span> <span class="st">"緯度"</span>) <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -424,40 +507,40 @@ GEOGCRS["WGS 84",
 </div>
 </div>
 </div>
-<section id="コロプレス図塗り分け地図" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="コロプレス図塗り分け地図"><span class="header-section-number">6.2.1</span> コロプレス図（塗り分け地図）</h3>
+<section id="コロプレス図塗り分け地図" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="コロプレス図塗り分け地図"><span class="header-section-number">6.4.1</span> コロプレス図（塗り分け地図）</h3>
 <p>2020年の総人口データを使って、各市区町村を塗り分けてみます。</p>
 <p>まず、各市区町村の総人口を読み込みます。このデータは<a href="https://www.e-stat.go.jp/regional-statistics/ssdsview">e-stat 都道府県・市区町村のすがた（社会・人口統計体系）</a>からダウンロードしたものです。</p>
 <p>読み込んだ後、市区町村名の先頭についている都道府県名を削除し（実際には空白より後だけ残す処理）、2020年度のデータだけを抽出します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pop_data_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"FEI_CITY_241027082628.csv"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(pop_data_file, <span class="at">skip =</span> <span class="dv">1</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_types =</span> <span class="st">"cc_n"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"name"</span>, <span class="st">"population"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_sub</span>(name, <span class="fu">str_locate</span>(name, <span class="st">" "</span>)[<span class="dv">1</span>] <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2020年度"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pop_data_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"FEI_CITY_241027082628.csv"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pop_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(pop_data_file, <span class="at">skip =</span> <span class="dv">1</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_types =</span> <span class="st">"cc_n"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"name"</span>, <span class="st">"population"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">str_sub</span>(name, <span class="fu">str_locate</span>(name, <span class="st">" "</span>)[<span class="dv">1</span>] <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2020年度"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>人口データを地理空間データに結合します。<code>left_join</code>は、<code>by</code>引数の変数をキーとして、左側のデータ(この例では<code>data</code>)を保存しつつ、右側のデータ(この例では<code>pop_data</code>)から共通のキーをもつ行を結合するという関数です。</p>
 <p>（この例では両方のデータが1対1対応するので、<code>left_join</code>でも<code>right_join</code>でも結果は変わりません。）</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_join <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(data, pop_data, <span class="at">by =</span> <span class="st">"name"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_join <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(data, pop_data, <span class="at">by =</span> <span class="st">"name"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>2020年の総人口データを色で表現して、地図化しました。総人口は対数スケールにしています。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_join) <span class="sc">+</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> population)) <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">family =</span> jp_font) <span class="sc">+</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">136.5</span>, <span class="fl">137.5</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">name =</span> <span class="st">"人口"</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">low =</span> <span class="st">"#4dc4ff"</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"#ff4b00"</span>,</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transform =</span> <span class="st">"log"</span>,</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">5e+3</span>, <span class="fl">5e+5</span>),</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">5e+3</span>, <span class="fl">1e+4</span>, <span class="fl">5e+4</span>, <span class="fl">1e+5</span>, <span class="fl">5e+5</span>),</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"5000"</span>, <span class="st">"1万"</span>, <span class="st">"5万"</span>,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"10万"</span>, <span class="st">"50万"</span>)) <span class="sc">+</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_join) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> population)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">family =</span> jp_font) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">136.5</span>, <span class="fl">137.5</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">name =</span> <span class="st">"人口"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">low =</span> <span class="st">"#4dc4ff"</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">high =</span> <span class="st">"#ff4b00"</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transform =</span> <span class="st">"log"</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">5e+3</span>, <span class="fl">5e+5</span>),</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fl">5e+3</span>, <span class="fl">1e+4</span>, <span class="fl">5e+4</span>, <span class="fl">1e+5</span>, <span class="fl">5e+5</span>),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"5000"</span>, <span class="st">"1万"</span>, <span class="st">"5万"</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"10万"</span>, <span class="st">"50万"</span>)) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -468,6 +551,11 @@ GEOGCRS["WGS 84",
 </div>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-Brundson2015" class="csl-entry" role="listitem">
+<div class="csl-left-margin">(1) </div><div class="csl-right-inline">Chris Brundson, Lex Comber. Rによる地理空間データ解析入門（湯谷啓明・工藤和奏・市川太祐（訳）. 東京, 共立出版, 2018.</div>
+</div>
+</div>
 </section>
 </section>
 
