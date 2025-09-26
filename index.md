@@ -2,6 +2,10 @@
 
 ## 各種発表ファイル
 
+- クマ×共生ハッカソン Day 2 (2025-09-27)
+    - [石川県クマ出没マップ](https://ito4303.shinyapps.io/Isikawa_kuma_map/)
+    - プレゼンテーション資料: [石川県クマ出没マップの作成](https://ito4303.github.io/Kuma/2025-09-27-kuma-map.html)
+
 - Kanazawa.R #3 (2025-05-10)
     - [（初心者チュートリアル資料）Rをつかってみよう](https://ito4303.github.io/KanazawaR003/Tutorial.html)
     - [（初心者チュートリアル資料）Rスクリプト](https://ito4303.github.io/KanazawaR003/Tutorial.R)
