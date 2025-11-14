@@ -7,7 +7,7 @@
     - [避難場所への経路をRで探索してみよう](https://ito4303.github.io/KanazawaR004/Hinanbasyo_route.html)
     - [ggplot2で 生存時間分析のグラフ作成](https://ito4303.github.io/KanazawaR004/survival-ggplot2.html)
     - [RからローカルLLMをつかう](https://ito4303.github.io/KanazawaR004/local_LLM.html)
-    - [リポジトリ]((https://github.com/ito4303/KanazawaR004)
+    - [リポジトリ](https://github.com/ito4303/KanazawaR004)
 
 - クマ×共生ハッカソン Day 2 (2025-09-27)
     - [石川県クマ出没マップ](https://ito4303.shinyapps.io/Isikawa_kuma_map/)
