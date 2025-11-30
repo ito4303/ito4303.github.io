@@ -2,6 +2,9 @@
 
 ## 各種発表ファイル
 
+- Japan.R 2025 (2025-12-06)
+    - [Kanazawa.R 紹介](https://ito4303.github.io/JapanR2025/KanazawaR2025.html)
+
 - Kanazawa.R #4 (2025-11-15)
     - [避難場所の位置をRで確認してみよう](https://ito4303.github.io/KanazawaR004/Hinanbasyo.html)
     - [避難場所への経路をRで探索してみよう](https://ito4303.github.io/KanazawaR004/Hinanbasyo_route.html)
