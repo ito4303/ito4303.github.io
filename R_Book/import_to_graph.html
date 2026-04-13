@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>5&nbsp; データの読み込みからグラフ作成まで – Rをはじめよう</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -73,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9b98f18118eee809be1c051eb5cc78e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-367522ac618891c39d4b2ae87ea7600e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -257,9 +260,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>実際にファイルを読み込む前に、まず、この後のデータの整形や可視化でも使用するのでtidyverseパッケージを読み込んでおきます。</p>
 <p>つづいて、<code>fie.path</code>関数で、使用するシステムに応じたファイルパスを作成して、<code>data_path</code>変数に入れておきます。ファイル名が<code>FEH_00200521_241003100519.csv</code>でなければ、ファイル名に合わせて変更してください。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"FEH_00200521_241003100519.csv"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"FEH_00200521_241003100519.csv"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>read_csv</code>関数で、上で定義したファイルパス(<code>data_path</code>)からファイルを読み込んで、<code>pref_data</code>というオブジェクトに格納します。ここで使用している、<code>read_csv</code>関数のその他の引数は、以下のとおりです。</p>
 <ul>
@@ -273,15 +276,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>locale</code>: 言語や地域に依存する設定です。ここでは文字コードに”CP932 “（Shift_JIS）を指定するようにしています。</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pref_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> data_path,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pref_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> data_path,</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">col_types =</span> <span class="st">"fcfcfccccd"</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na =</span> <span class="st">"-"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"CP932"</span>))</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"CP932"</span>))</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>ちなみに、Excelファイルの場合は、readxlパッケージの<code>read_excel</code>関数が利用可能です。</p>
 <p><code>read_csv</code>関数で読み込んだデータを確認します。<code>head</code>関数で、先頭の5行を表示します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_data, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_data, <span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 10
   tab_code 表章項目 cat01_code 男女_時系列 area_code 地域_時系列 time_code 
@@ -300,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="5.3" class="anchored" data-anchor-id="データの整形"><span class="header-section-number">5.3</span> データの整形</h2>
 <p>読み込んだデータのうち、後で使うところだけを残します。これには以下のような処理をおこないます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="ot">&lt;-</span> pref_data <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="ot">&lt;-</span> pref_data <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">表章項目</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"人口"</span> <span class="sc">&amp;</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="sc">!</span>(<span class="st">`</span><span class="at">地域_時系列</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"人口集中地区"</span>,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                                        <span class="st">"人口集中地区以外の地区"</span>))) <span class="sc">|&gt;</span></span>
@@ -310,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">levels =</span> <span class="fu">unique</span>(pref_data<span class="sc">$</span><span class="st">`</span><span class="at">地域_時系列</span><span class="st">`</span>)),</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">str_sub</span>(time_code, <span class="dv">1</span>, <span class="dv">4</span>)),</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">人口</span><span class="st">`</span> <span class="ot">=</span> value,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">.keep =</span> <span class="st">"none"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">.keep =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>順を追って説明します。まず、人口だけが必要なので、dplyrパッケージの<code>filter</code>関数を使って、<code>表章項目</code>列が”人口”で、なおかつ（<code>&amp;</code>は論理積の演算子です）、<code>地域_時系列</code>列が”人口集中地区”あるいは”人口集中地区の地区”<strong>ではない</strong>行を残しています。<code>filter</code>関数は、データフレームのうち、条件に合致する行だけを残すというものです。また、<code>%in%</code>演算子は、左辺の値が、右辺のベクトルの要素であればと<code>TRUE</code>、そうでなければ<code>FALSE</code>の値を返すというものです。<code>!</code>は否定の単項論理演算子です。</p>
 <p>なお、dplyrパッケージはtidyverseパッケージに含まれているので、ここであらためて読み込む必要はありません。</p>
@@ -322,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="整形結果"><span class="header-section-number">5.3.1</span> 整形結果</h3>
 <p>必要な部分だけを残すと以下のようになりました。<code>head</code>関数で最初の5行を表示して、確認します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_popl,<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_popl,<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 4
   男女  地域     年     人口
@@ -342,36 +345,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>グラフ作成の前に、使用する日本語フォントを変数にいれておきます。この部分はシステムやお好みで適宜変えてください。このように変数にいれておくと、この部分だけ変更することで、あとのグラフのフォントを一括で変更することができます。</p>
 <p>今回はYuGothicを使用しましたが、お好みのフォントを利用してください。ヒラギノフォントでしたら”Hiragino Sans”、Notoフォントでしたら、“Noto Sans JP”などとすればよいでしょう。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jp_font <span class="ot">&lt;-</span> <span class="st">"YuGothic"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jp_font <span class="ot">&lt;-</span> <span class="st">"YuGothic"</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#jp_font &lt;- "Hiragino Sans"</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#jp_font &lt;- "Noto Sans JP"</span></span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#jp_font &lt;- "Noto Sans JP"</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>参考までに、利用可能なフォントの一覧は、systemfontsパッケージの<code>system_fonts</code>関数で得ることができます。以下は、筆者の環境（macOS 15.5）で、<code>family</code>列に”Hiragino”を含む行の、<code>name</code>、<code>family</code>、<code>style</code>列を抽出した結果です。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">str_detect</span>(family, <span class="st">"Hiragino"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(name, family, style)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(name, family, style)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 17 × 3
-   name               family                    style
-   &lt;chr&gt;              &lt;chr&gt;                     &lt;chr&gt;
- 1 HiraginoSans-W4    Hiragino Sans             W4   
- 2 HiraginoSans-W1    Hiragino Sans             W1   
- 3 HiraginoSans-W8    Hiragino Sans             W8   
- 4 HiraginoSansGB-W6  Hiragino Sans GB          W6   
- 5 HiraginoSans-W5    Hiragino Sans             W5   
- 6 HiraginoSansGB-W3  Hiragino Sans GB          W3   
- 7 HiraginoSans-W2    Hiragino Sans             W2   
- 8 HiraMinProN-W3     Hiragino Mincho ProN      W3   
- 9 HiraginoSans-W9    Hiragino Sans             W9   
-10 HiraginoSansCNS-W3 Hiragino Sans CNS         W3   
-11 HiraMinProN-W6     Hiragino Mincho ProN      W6   
-12 HiraginoSans-W6    Hiragino Sans             W6   
-13 HiraginoSans-W3    Hiragino Sans             W3   
-14 HiraMaruProN-W4    Hiragino Maru Gothic ProN W4   
-15 HiraginoSansCNS-W6 Hiragino Sans CNS         W6   
-16 HiraginoSans-W0    Hiragino Sans             W0   
-17 HiraginoSans-W7    Hiragino Sans             W7   </code></pre>
+<pre><code># A tibble: 15 × 3
+   name              family                    style
+   &lt;chr&gt;             &lt;chr&gt;                     &lt;chr&gt;
+ 1 HiraginoSans-W4   Hiragino Sans             W4   
+ 2 HiraginoSans-W1   Hiragino Sans             W1   
+ 3 HiraginoSans-W8   Hiragino Sans             W8   
+ 4 HiraginoSansGB-W6 Hiragino Sans GB          W6   
+ 5 HiraginoSans-W5   Hiragino Sans             W5   
+ 6 HiraginoSansGB-W3 Hiragino Sans GB          W3   
+ 7 HiraginoSans-W2   Hiragino Sans             W2   
+ 8 HiraMinProN-W3    Hiragino Mincho ProN      W3   
+ 9 HiraginoSans-W9   Hiragino Sans             W9   
+10 HiraMinProN-W6    Hiragino Mincho ProN      W6   
+11 HiraginoSans-W6   Hiragino Sans             W6   
+12 HiraginoSans-W3   Hiragino Sans             W3   
+13 HiraMaruProN-W4   Hiragino Maru Gothic ProN W4   
+14 HiraginoSans-W0   Hiragino Sans             W0   
+15 HiraginoSans-W7   Hiragino Sans             W7   </code></pre>
 </div>
 </div>
 <section id="折れ線グラフ" class="level3" data-number="5.4.1">
@@ -379,14 +380,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>まず、全国の人口総数データを時系列で表示します。時系列データの可視化には折れ線グラフを使用します。</p>
 <p>dplyrパッケージの<code>filter</code>関数で、<code>地域 == "全国", 男女 == "総数"</code>と指定して、グラフに必要な行だけに絞り込みます。<code>filter</code>関数で引数をコンマでつなげると、論理積（<code>&amp;</code>）と同じになります。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>all_popl <span class="ot">&lt;-</span> pref_popl <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>all_popl <span class="ot">&lt;-</span> pref_popl <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>つづいて、グラフを作成します。<code>ggplot</code>関数は、グラフのオブジェクトの初期化をおこなう関数です。<code>data</code>引数に、使用するデータの<code>all_popl</code>を与えます。<code>mapping</code>引数には<code>aes(x = `年`, y = `人口`)</code>という関数の値を与えています(aes = aesthetic mappings)。これにより、X軸に年、Y軸に人口をマッピングすると指定しています。</p>
 <p>ggplot2では、“+”演算子で、レイヤー（層）を追加していってグラフを完成させるようになっています。次の行の<code>geom_line</code>関数で折れ線グラフを描画します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_popl, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> all_popl, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -402,13 +403,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>theme_gray</code>で、テーマの設定とフォントの設定をおこないます。</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_popl, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(all_popl, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1920</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"人口（人）"</span>,</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">6e+7</span>, <span class="fl">12e+7</span>, <span class="at">by =</span> <span class="fl">2e+7</span>),</span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"6000万"</span>, <span class="st">"8000万"</span>, <span class="st">"1億"</span>, <span class="st">"1億2000万"</span>)) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -421,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>まず、<code>dplyr::filter</code>関数で全国のデータだけ残します。この関数の返り値をパイプ演算子で次の行の<code>ggplot</code>関数に渡しています。</p>
 <p><code>ggplot</code>関数の<code>mapping</code>引数では、<code>aes関数</code>で<code>colour = `男女`</code>と引数を与えることで、<code>男女</code>列の要素別に色分けして線を引きます。また、<code>scale_colour_manual</code>で各要素の色を指定しています（カラーユニバーサルデザイン対応の色にしています）。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"全国"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">`</span><span class="at">男女</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
@@ -430,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">name =</span> <span class="st">"人口（人）"</span>,</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">4e+7</span>, <span class="fl">12e+7</span>, <span class="fl">2e+7</span>),</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"4000万"</span>, <span class="st">"6000万"</span>, <span class="st">"8000万"</span>, <span class="st">"1億"</span>, <span class="st">"1億2000万"</span>)) <span class="sc">+</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -442,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>つづいて、富山県・石川県・福井県のデータを、総数・男・女の別に表示します。<code>dplyr::filter</code>関数で、この3県のデータだけを抽出しています。<code>aes</code>関数の引数で”<code>shape = `地域`, linetype = `地域`</code>“とすることで、県別に点の形と線の種類を変えることができます。</p>
 <p><code>scale_y_continuous</code>関数では、Y軸の目盛りを、2×10<sup>5</sup>から12×10<sup>5</sup>の間で、2×10<sup>5</sup>刻みとすること、表示されるラベルは10<sup>4</sup>（=1万）単位とすることを指定しています。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"富山県"</span>, <span class="st">"石川県"</span>, <span class="st">"福井県"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>, <span class="at">colour =</span> <span class="st">`</span><span class="at">男女</span><span class="st">`</span>, </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">linetype =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>)) <span class="sc">+</span></span>
@@ -453,7 +454,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">2e+5</span>, <span class="fl">12e+5</span>),</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">2e+5</span>, <span class="fl">12e+5</span>, <span class="at">by =</span> <span class="fl">2e+5</span>),</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>) <span class="sc">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -470,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>続いて、グラフを作成します。<code>geom_area</code>関数で積み上げグラフを描画します。また、<code>annotate</code>関数でグラフに直接説明を書き込みました。</p>
 <p>最後に、<code>facet_wrap</code>関数を使って各県のグラフを分割して描くようにしています。引数で<code>~`地域`</code> とすることで、各県のグラフを分割するように指定しています。また、<code>nrow = 2</code> で、グラフを2行にして描画することを指定しています。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"男"</span>, <span class="st">"女"</span>),</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"富山県"</span>, <span class="st">"石川県"</span>, <span class="st">"福井県"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">年</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>, <span class="at">fill =</span> <span class="st">`</span><span class="at">男女</span><span class="st">`</span>)) <span class="sc">+</span></span>
@@ -484,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>) <span class="sc">+</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#005aff"</span>, <span class="st">"#ff4b00"</span>)) <span class="sc">+</span></span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_gray</span>(<span class="at">base_family =</span> jp_font) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span><span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -499,13 +500,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>次に、都道府県ごとに、2020年の男女の人口を比較するグラフを作成します。これには散布図を使用します。</p>
 <p>そのため、まずデータを変形します。<code>pref_popl</code>の<code>男女</code>列には、“総数”、“男”、“女”の3つの値が含まれていますが、これを別々の列に分けるようにします。これにはtiydrパッケージの<code>pivot_wider</code>関数を使用します。<code>names_from</code>引数には、新しい列となる値を含む列を指定します。ここでは<code>男女</code>列です。また、<code>values_from</code>引数には、新しい列の値となる値を含む列を指定します。ここでは<code>人口</code>列です。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pref_popl_wide <span class="ot">&lt;-</span> pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pref_popl_wide <span class="ot">&lt;-</span> pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"男女"</span>, <span class="at">values_from =</span> <span class="st">"人口"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>このようになります。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_popl_wide)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pref_popl_wide)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   地域      年    総数      男      女
@@ -520,9 +521,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>グラフにします。<code>geom_point</code>で散布図を作成します。<code>aes</code>関数で、X軸に男、Y軸に女をマッピングするように指定しています。テーマは<code>theme_bw</code>にしました。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pref_popl_wide, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">男</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">女</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pref_popl_wide, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">男</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">女</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -538,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>“<code>coord_fixed(ratio = 1)</code>”で、X軸とY軸の比を1:1に設定します。</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pref_popl_wide, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">男</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">女</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pref_popl_wide, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">男</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">女</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">"男性人口（万人）"</span>,</span>
@@ -550,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">8e+6</span>, <span class="at">by =</span> <span class="fl">2e+6</span>),</span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>) <span class="sc">+</span></span>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -566,11 +567,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>まず、<code>pref_popl</code>から<code>filter</code>関数で必要な行を取り出します。<code>`地域` != "全国"</code> とすることで、<code>地域</code>列の値が”全国”以外（<code>!=</code> は「不等」を意味する比較演算子です）、すなわち各都道府県の行を残すようにします。さらに、<code>`男女` == "総数"</code> と <code>`年` == 2020</code> とコンマで区切って続けて、人口総数の2020年の行だけを残しています。</p>
 <p><code>geom_col</code>は棒グラフを描画する関数です。テーマは<code>theme_classic</code>を使用しました。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -582,7 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ひとまずグラフができましたが、みばえがいまひとつなので、改良していきます。</p>
 <p>まず、横軸のラベルが重なっていて読めないので、<code>scale_x_discrete</code>関数で”<code>guide = guide_axis(angle = 90)</code>“と指定して、ラベルを90°回転させます。また、<code>scale_y_continuous</code>関数で、横軸の表示を整えます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
@@ -591,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.5e+7</span>),</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.5e+7</span>, <span class="fl">5e+6</span>),</span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>) <span class="sc">+</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -602,7 +603,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>このグラフは横にしたほうが見やすいかもしれません。そうするには、<code>coord_flip()</code>を使います。そうすると、縦軸が下から並ぶようになるので、<code>scale_x_discrete</code>関数で、<code>limits = rev</code>として、上から並ぶようにさせます。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
@@ -612,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">1.5e+7</span>, <span class="fl">5e+6</span>),</span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>) <span class="sc">+</span></span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -623,7 +624,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>都道府県名のラベルと、横軸の0との間の隙間が気になるので、ここを詰めるようにします。これには、<code>scale_y_continuous</code>関数で、<code>expand = expansion(mult = c(0, 0.05))</code>と指定します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"総数"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
@@ -634,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>,</span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>))) <span class="sc">+</span></span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -646,7 +647,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>男女別の積み上げ棒グラフにします。<code>filter</code>関数で必要な行を取り出しますが、今回は <code>`男女` != "総数"</code> として、男女列の値が総数でない、すなわち”男”か”女”の行を抽出しています。<code>地域</code>と<code>年</code>は前と同様です。</p>
 <p>積み上げ棒グラフを作成するには、<code>geom_col</code>関数の引数で<code>position = "stack"</code>とします（これはデフォルトの動作です）。また、<code>scale_fill_manual(values = c("#005aff", "#ff4b00"))</code>で色も指定します。</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pref_popl <span class="sc">|&gt;</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">地域</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"全国"</span>, <span class="st">`</span><span class="at">男女</span><span class="st">`</span> <span class="sc">!=</span> <span class="st">"総数"</span>, <span class="st">`</span><span class="at">年</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">2020</span>) <span class="sc">|&gt;</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">地域</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">人口</span><span class="st">`</span>, <span class="at">fill =</span> <span class="st">`</span><span class="at">男女</span><span class="st">`</span>)) <span class="sc">+</span></span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
@@ -658,7 +659,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> \(x) x <span class="sc">/</span> <span class="fl">1e+4</span>,</span>
 <span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>))) <span class="sc">+</span></span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> jp_font)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -730,13 +731,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

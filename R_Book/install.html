@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>1&nbsp; RとRStudioのインストール（Windows &amp; Mac） – Rをはじめよう</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -73,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9b98f18118eee809be1c051eb5cc78e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-367522ac618891c39d4b2ae87ea7600e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -375,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="1.1.1.3" class="anchored" data-anchor-id="wingetでのインストール"><span class="header-section-number">1.1.1.3</span> wingetでのインストール</h4>
 <p>wingetはWindows純正のパッケージマネージャーです。コマンド入力操作が必要になりますが、これを使ってRをインストールすることも可能です。</p>
 <p>wingetを使ってRをインストールするには、PowerShellなどで以下のコマンドを打ち込んでください。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">-e</span> <span class="at">--id</span> RProject.R</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">-e</span> <span class="at">--id</span> RProject.R</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>これだけで、Rのインストーラーのダウンロードと、インストールをやってくれます。</p>
 </section>
 </section>
@@ -385,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="インストーラーのダウンロード-1" class="level4" data-number="1.1.2.1">
 <h4 data-number="1.1.2.1" class="anchored" data-anchor-id="インストーラーのダウンロード-1"><span class="header-section-number">1.1.2.1</span> インストーラーのダウンロード</h4>
 <p>CRANのRダウンロードページ（<a href="#fig-cran-download" class="quarto-xref">図&nbsp;<span>1.1</span></a>）の“Download R for macOS”のリンク先へ移動します。移動先の画面（<a href="#fig-mac-download-R" class="quarto-xref">図&nbsp;<span>1.12</span></a>）で、お使いのマシンのCPUにあわせてamd64版(Apple Silicon)か、x86版(Intel)を選択します。</p>
-<div id="fig-mac-download-R" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac版インストーラーのダウンロード画面" width="480">
+<div id="fig-mac-download-R" class="quarto-float quarto-figure quarto-figure-center anchored" width="480" alt="Mac版インストーラーのダウンロード画面">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mac-download-R-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/mac_download_R-01.png" id="fig-mac-download-R" class="img-fluid figure-img" alt="Mac版インストーラーのダウンロード画面" width="480">
@@ -481,7 +484,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="homebrewでのインストール"><span class="header-section-number">1.1.3</span> Homebrewでのインストール</h3>
 <p><a href="https://brew.sh/ja/">Homebrew</a>はmacOS向けのパッケージマネージャーです。コマンド入力操作が必要になりますが、これを使ってRをインストールすることも可能です。</p>
 <p>Homebrew自体がインストール済みでしたら、ターミナルで以下のコマンドを打ち込んでください。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> r</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 <p>すると、Rインストーラーのダウンロードとインストールまでやってくれます。</p>
 </section>
 </section>
@@ -553,7 +556,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="wingetでのインストール-1" class="level4" data-number="1.2.1.2">
 <h4 data-number="1.2.1.2" class="anchored" data-anchor-id="wingetでのインストール-1"><span class="header-section-number">1.2.1.2</span> wingetでのインストール</h4>
 <p>あるいはwingetを使って、以下のコマンドでインストールできます。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">-e</span> <span class="at">--id</span> Posit.RStudio</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">winget</span> install <span class="at">-e</span> <span class="at">--id</span> Posit.RStudio</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="macでのrstudioのインストール" class="level3" data-number="1.2.2">
@@ -561,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="インストーラーからインストール-1" class="level4" data-number="1.2.2.1">
 <h4 data-number="1.2.2.1" class="anchored" data-anchor-id="インストーラーからインストール-1"><span class="header-section-number">1.2.2.1</span> インストーラーからインストール</h4>
 <p>ダウンロードしたインストーラーのディスクイメージを開きます。開いたウィンドウ（<a href="#fig-mac_install_RStudio-01" class="quarto-xref">図&nbsp;<span>1.25</span></a>）で、 RStudioのアイコンをドラッグして、Applicationsフォルダ（のエイリアス）にドロップしてください。これでインストール完了です。</p>
-<div id="fig-mac_install_RStudio-01" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ" width="480">
+<div id="fig-mac_install_RStudio-01" class="quarto-float quarto-figure quarto-figure-center anchored" width="480" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-mac_install_RStudio-01-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="figures/mac_install_RStudio-01.png" id="fig-mac_install_RStudio-01" class="img-fluid figure-img" alt="Mac版RStudioのインストーラーのディスクイメージを開いたところ" width="480">
@@ -575,7 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="homebrewでのインストール-1" class="level4" data-number="1.2.2.2">
 <h4 data-number="1.2.2.2" class="anchored" data-anchor-id="homebrewでのインストール-1"><span class="header-section-number">1.2.2.2</span> Homebrewでのインストール</h4>
 <p>あるいは、Homebrewでは以下のコマンドでインストールできます。</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> rstudio</span></code><button title="コピー" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> rstudio</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
@@ -634,13 +637,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
