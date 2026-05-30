@@ -2,6 +2,13 @@
 
 ## 各種発表ファイル
 
+- Kanazawa.R #5 (2026-05-30)
+    - [Rをつかってみよう 2026年版](https://ito4303.github.io/KanazawaR005/Tutorial.html)
+    - [Quartoで、コピペミスしないプレゼンテーション資料作成](https://ito4303.github.io/KanazawaR005/quarto-presentation.html)
+    - [トキ (*Nipponia nippon*) の分布をしらべる](https://ito4303.github.io/KanazawaR005/toki.html)
+    - [リポジトリ](https://github.com/ito4303/KanazawaR005)
+
+
 - Japan.R 2025 (2025-12-06)
     - [Kanazawa.R 紹介](https://ito4303.github.io/JapanR2025/KanazawaR2025.html)
 
