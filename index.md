@@ -2,6 +2,8 @@
 
 ## 各種発表ファイル
 
+- [ESSからEllamaでローカルLLMをつかう](https://ito4303.github.io/ess-ellama.html) (2026-07-25 第121回 Tokyo.R)
+
 - Kanazawa.R #5 (2026-05-30)
     - [Rをつかってみよう 2026年版](https://ito4303.github.io/KanazawaR005/Tutorial.html)
     - [Quartoで、コピペミスしないプレゼンテーション資料作成](https://ito4303.github.io/KanazawaR005/quarto-presentation.html)
@@ -98,8 +100,8 @@
 
 ## リンク
 
-- [伊東生態統計ラボ](https://ito4303.sakura.ne.jp/)
+- [伊東生態統計研究室](https://ito4303.sakura.ne.jp/)
     - [Blog](https://ito4303.sakura.ne.jp/posts.html)
-- [Taglibro de H](https://ito-hi.blog.ss-blog.jp/)
+- [日々の記録 (Taglibro)](https://ito4303.hatenablog.com/)
 - [GitHub](https://github.com/ito4303)
 - [researchmap](https://researchmap.jp/read0208767)
