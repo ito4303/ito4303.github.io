@@ -2,6 +2,11 @@
 
 ## 各種発表ファイル
 
+- Kanazawa.R #6 (2026-11-28)
+    - [Rでクマ出没地図を作成しよう](https://ito4303.github.io/KanazawaR006/Kuma_map.html)
+    - [いろいろなデータを地図にかさねる](https://ito4303.github.io/KanazawaR006/overlap.html)
+    - [ggcubeで3D地図](https://ito4303.github.io/KanazawaR006/ggcube_3d_map.html)
+
 - [ESSからEllamaでローカルLLMをつかう](https://ito4303.github.io/ess-ellama.html) (2026-07-25 第121回 Tokyo.R)
 
 - Kanazawa.R #5 (2026-05-30)
